@@ -1,0 +1,29 @@
+<div ng-show="step">
+  <div class="hero-unit">
+    <h2>{{ step.title }}</h2>
+    <p>{{ step.description }}</p>
+
+    <form ng-submit="verify(step)" ng-show="step.choices && step.choices.length">
+      <label class="checkbox" ng-repeat="choice in step.choices">
+        <input type="radio" name="choice" 
+          value="{{ choice.id }}"
+          ng-checked="choice.id == $parent.step.choice"
+          ng-model="$parent.step.choice" />
+        {{ choice.text }}
+      </label>
+      <button class="btn btn-success">Check</button>
+    </form>
+  </div>
+
+  <button class="btn" ng-disabled="!prevStep" ng-click="prev()">
+    Previous
+  </button>
+
+  <button class="btn" ng-disabled="!verified || !nextStep" ng-click="next()">
+    Next
+  </button>
+</div>
+
+<div ng-hide="step">
+  <p>Uh oh, this step seems to be missing. :(</p>
+</div>
