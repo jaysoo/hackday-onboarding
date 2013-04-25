@@ -1,6 +1,6 @@
 define ['app', 'underscore'], (App, _) ->
 
-  StepController = ($scope, $location, $routeParams, StepsService) ->
+  StepController = ($scope, $location, $routeParams, $rootScope, StepsService) ->
 
     # Retrieve all steps from the service.
     StepsService.all (steps) ->
@@ -26,6 +26,14 @@ define ['app', 'underscore'], (App, _) ->
 
       $scope.next = -> 
         $location.url '/steps/' + $scope.nextStep.number
+        $scope.recalculatePercentageCompleted()
+
+      # Updates completion percentage.
+      $scope.recalculatePercentageCompleted = ->
+        completed = _.filter $scope.steps, (step) -> step.done
+        $rootScope.percentCompleted = completed.length / $scope.steps.length * 100
+
+      $scope.recalculatePercentageCompleted()
 
     # Verification for questions.
     $scope.verify = (step) ->

@@ -48,7 +48,7 @@ module.exports = (grunt) ->
         files: ['<%= project.app %>/test/spec/{,*/}*.coffee']
         tasks: ['coffee:test']
       stylesheets:
-        files: ['{,*/}*.less']
+        files: ['<%= project.app %>/styles/{,*/}*.less']
         tasks: ['less']
       livereload:
         files: [
