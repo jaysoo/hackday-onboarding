@@ -24,11 +24,67 @@
         <div class="row-fluid">
 
           <!-- Begin page content -->
-          <div class="span8 main" id="ng-view" role="main" data-ng-view data-ng-animate="{enter: 'view-enter', leave: 'view-leave'}"></div>
+          <div class="span8 main">
+            <!--<div class="sections">
+            <ul>
+              <li><a href="#">Admin</a></li>
+              <li><a href="#">Social</a></li>
+              <li><a href="#">Training</a></li>
+            </ul>
+            </div>
+            <div class="clearer"></div>-->
+            <div id="ng-view" role="main" data-ng-view data-ng-animate="{enter: 'view-enter', leave: 'view-leave'}"></div>
+          </div>
 
           <div class="span3 offset1 sashbar">
-            <h2>Sashbar</h2>
-            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+            <h2>Achievements</h2>
+            
+            <div class="badge-wrapper">
+              
+              <div class="badge-item">
+                <div class="badge-icon">  
+                  <img src="img/envelope.png" />
+                </div>
+                <!-- badge image ends -->
+                <div class="badge-text">
+                  <h3>Envelope</h3>
+                  <p>You unlocked the envelope!</p>
+                </div>
+                <!-- badge icon ends -->  
+              </div>
+              <!-- badge item ends -->
+
+              <div class="badge-item">
+                <div class="badge-icon">  
+                  <img src="img/historian.png" />
+                </div>
+                <!-- badge image ends -->
+                <div class="badge-text">
+                  <h3>Historian</h3>
+                  <p>You unlocked the envelope!</p>
+                </div>
+                <!-- badge icon ends -->  
+              </div>
+              <!-- badge item ends -->
+
+
+              <div class="badge-item grayscale">
+                <div class="badge-icon">  
+                  <img src="img/mughunter.png" />
+                </div>
+                <!-- badge image ends -->
+                <div class="badge-text">
+                  <h3>Mughunter</h3>
+                  <p>You unlocked the envelope!</p>
+                </div>
+                <!-- badge icon ends -->  
+              </div>
+              <!-- badge item ends -->
+
+             </div> 
+             <!-- badge wrapper ends -->
+
+            <div class="clearer"></div>
 
             <span class="stitches"></span>
             <span class="ripped"></span>
@@ -45,7 +101,7 @@
 
     <div id="footer">
       <div class="container" style="margin-left:20px;">
-         <p style="float:left;margin:18px 20px 0 0;">Your progress</p>
+         <p style="float:left;margin:18px 20px 0 0;font-weight:600;">Your progress</p>
 
         <div class="progress" data-ng-controller="ProgressBarController">
           <div class="bar" style="width: {{ percentCompleted }}%;"></div>

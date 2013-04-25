@@ -3,7 +3,7 @@
     "id": 42,
     "number": 1,
     "title": "Go do this",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
     "choices": [],
     "is_text_question": false,
     "done": false,
