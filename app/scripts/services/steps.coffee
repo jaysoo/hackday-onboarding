@@ -14,6 +14,7 @@ define ['app'], (App) ->
 
       if steps
         @updateBadgeStatus(step) for step in steps
+        @rootScope.$emit 'onStepsLoaded', steps
         respond?(steps)
       else
         @Step.query (steps) =>
@@ -22,6 +23,7 @@ define ['app'], (App) ->
 
           @cache.put 'steps', steps
           @updateBadgeStatus(step) for step in steps
+          @rootScope.$emit 'onStepsLoaded', steps
           respond?(steps)
 
     markDone: (step) =>
