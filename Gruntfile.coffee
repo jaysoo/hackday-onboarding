@@ -9,7 +9,7 @@ projectConfig =
 
 module.exports = (grunt) ->
   # Load all grunt tasks
-  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
+  require('matchdep').filterAll('grunt-*').forEach(grunt.loadNpmTasks)
 
   # Grunt configuration:
   #

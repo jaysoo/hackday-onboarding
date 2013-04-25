@@ -263,3 +263,20 @@ h1{
 .container .credit {
   margin: 20px 0;
 }
+
+.small-text {
+  font-size: 12px;
+}
+
+.nudge-top {
+  margin-top: 10px;
+}
+.nudge-right {
+  margin-right: 10px;
+}
+.nudge-bottom {
+  margin-bottom: 10px;
+}
+.nudge-left {
+  margin-left: 10px;
+}

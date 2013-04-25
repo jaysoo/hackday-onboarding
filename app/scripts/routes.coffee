@@ -9,6 +9,9 @@ define ['app'], (App) ->
         .when '/steps/:stepNum',
           templateUrl: 'views/step.html'
           controller: 'StepController'
+        .when '/finished',
+          templateUrl: 'views/finish.html'
+          controller: 'FinishController'
         .otherwise
           redirectTo: '/'   
 

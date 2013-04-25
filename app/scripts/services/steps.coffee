@@ -13,14 +13,15 @@ define ['app'], (App) ->
 
       if steps
         respond steps
-        @_initStatus(step) for step in steps
       else
         @Step.query (steps) =>
+          # Sort by step number in ascending order.
+          steps = _.sortBy steps, 'number'
+
           @cache.put 'steps', steps
-          @_initStatus(step) for step in steps
           respond steps
 
-    _initStatus: (step) ->
+    updateStatus: (step) ->
       # Check if this step can be marked as done (no questions).
       if not step.choices.length and not step.is_text_question
         step.done = true
@@ -28,13 +29,26 @@ define ['app'], (App) ->
 
     verify: (step, respond) =>
       @http.get('data/answer.json').then((resp) =>
-        # Mark step as completed and emit event.
-        if resp.data.correct
-          step.done = true
-          @rootScope.$emit 'onStepComplete', step
+          # Mark step as completed and emit event.
+          if resp.data.correct
+            @updateStatus(step)
+            step.done = true
+            @rootScope.$emit 'onStepComplete', step
+          else
+            @rootScope.$emit 'onIncorrectResponse', step
 
-        respond resp.data
-      )
+          respond resp.data
+        )
+
+    # Assume that steps is sorted, which the should be if loaded
+    # from this service. Returns `null` if all are done.
+    getFirstIncomplete: (steps) ->
+      firstIncompleteStep = null  # Defaults to first step.
+      for step in steps
+        unless step.done
+          firstIncompleteStep = step
+          break
+      return firstIncompleteStep
 
 
   App.service 'StepsService', StepsService

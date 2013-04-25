@@ -3,47 +3,68 @@
     <h1>{{ step.title }}</h1>
     <p>{{ step.description }}</p>
 
-    <form ng-submit="verify(step)" ng-show="step.choices && step.choices.length">
-      <label class="checkbox" ng-repeat="choice in step.choices">
-        <input type="radio" name="choice" 
-          value="{{ choice.id }}"
-          ng-checked="choice.id == $parent.step.choice"
-          ng-disabled="verified"
-          ng-model="$parent.step.choice" />
-        {{ choice.text }}
-      </label>
-      <button class="btn btn-success" ng-disabled="!step.choice || verified" >Check</button>
-      <span ng-show="verified">
-        <i class="icon-ok"></i>
-        Correct!
-      </span>
-    </form>
+    <form data-ng-submit="verify(step)" data-ng-switch="step.type">
+      <div class="control-group" ng-class="{error: incorrect}">
+        <span data-ng-switch-when="task">
+          <button class="btn btn-success"
+            data-ng-disabled="inProgress || verified" >Ok, I'm done</button>
+          <span data-ng-show="verified" class="text-success">
+            Great! :)
+          </span>
+        </span>
 
-    <form ng-submit="verify(step)" ng-show="step.is_text_question">
-      <label>
-        {{ step.text_question }}
-        <input type="text" name="text_answer" 
-          value="{{ choice.id }}"
-          ng-disabled="verified"
-          ng-model="step.text_answer" />
-      </label>
-      <button class="btn btn-success" ng-disabled="!step.text_answer || verified" >Check</button>
-      <span ng-show="verified">
-        <i class="icon-ok"></i>
-        Correct!
-      </span>
+        <span data-ng-switch-when="multiple_choice">
+          <label class="checkbox" data-ng-repeat="choice in step.choices">
+            <input type="radio" name="choice" 
+              value="{{ choice.id }}"
+              data-ng-checked="choice.id == $parent.step.choice"
+              data-ng-disabled="verified"
+              data-ng-model="$parent.step.choice" />
+            {{ choice.text }}
+          </label>
+          <button class="btn btn-success"
+            data-ng-disabled="!step.choice || inProgress || verified" >Check</button>
+        </span>
+
+        <span data-ng-switch-when="text">
+          <label>
+            <input type="text" name="text_answer" 
+              placeholder="Your answer here"
+              value="{{ choice.id }}"
+              data-ng-disabled="verified"
+              data-ng-model="step.text_answer" />
+          </label>
+          <button class="btn btn-success"
+            data-ng-disabled="!step.text_answer || inProgress || verified" >Check</button>
+        </span>
+
+        <span data-ng-show="step.type == 'text' || step.type == 'multiple_choice'">
+          <span data-ng-show="verified" class="text-success">
+            <i class="icon-ok"></i>
+            Correct!
+          </span>
+
+          <span data-ng-show="incorrect" class="text-error">
+            Wrong answer :(
+          </span>
+        </span>
+      </div>
     </form>
   </div>
 
-  <button class="btn" ng-disabled="!prevStep" ng-click="prev()">
+  <button class="btn" data-ng-disabled="!prevStep" data-ng-click="prev()">
     Previous
   </button>
 
-  <button class="btn" ng-disabled="!verified || !nextStep" ng-click="next()">
+  <button class="btn" ng-show="nextStep" data-ng-disabled="!verified" data-ng-click="next()">
     Next
+  </button>
+
+  <button class="btn btn-primary" ng-hide="nextStep" data-ng-disabled="!verified" data-ng-click="finish()">
+    Done
   </button>
 </div>
 
-<div ng-hide="step">
+<div data-ng-hide="step">
   <p>Uh oh, this step seems to be missing. :(</p>
 </div>

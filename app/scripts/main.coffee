@@ -24,9 +24,12 @@ require
     'controllers/welcome'
     'controllers/progressbar'
     'controllers/step'
+    'controllers/finish'
+    'controllers/level'
 
     # Services
     'services/steps'
+    'services/profile'
 
     # Factories
     'factories/cache'
