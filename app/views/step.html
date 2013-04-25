@@ -8,6 +8,7 @@
         <input type="radio" name="choice" 
           value="{{ choice.id }}"
           ng-checked="choice.id == $parent.step.choice"
+          ng-disabled="verified"
           ng-model="$parent.step.choice" />
         {{ choice.text }}
       </label>
@@ -23,6 +24,7 @@
         {{ step.text_question }}
         <input type="text" name="text_answer" 
           value="{{ choice.id }}"
+          ng-disabled="verified"
           ng-model="step.text_answer" />
       </label>
       <button class="btn btn-success" ng-disabled="!step.text_answer || verified" >Check</button>

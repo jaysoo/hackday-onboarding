@@ -1,29 +1,57 @@
-<!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Wave Onboarding</title>
+    <title>Welcome to Wave!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <meta name="author" content="">
+
+    <!-- CSS -->
+    <link href="styles/main.css" rel="stylesheet">
+    <link href="styles/custom.css" rel="stylesheet">
+
+    <!-- Fav and touch icons -->
     <link rel="shortcut icon" href="favicon.png">
-    <link rel="stylesheet" href="styles/main.css">
   </head>
+
   <body>
-    <!--[if lt IE 9]>
-      <script src="components/es5-shim/es5-shim.js"></script>
-      <script src="components/json3/lib/json3.min.js"></script>
-    <![endif]-->
 
-    <div class="container">
-      <div class="progress" data-ng-controller="ProgressBarController">
-        <div class="bar" style="width: {{ percentCompleted }}%;"></div>
+    <!-- wrap -->
+    <div id="wrap">
+      <div class="container-fluid" style="padding-right:0;padding-left:40px;">
+        <div class="row-fluid">
+
+          <!-- Begin page content -->
+          <div class="span8 main" id="ng-view" role="main" data-ng-view data-ng-animate="{enter: 'view-enter', leave: 'view-leave'}"></div>
+
+          <div class="span3 offset1 sashbar">
+            <h2>Sashbar</h2>
+            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+            <span class="stitches"></span>
+            <span class="ripped"></span>
+          </div>
+          <!-- sashbar ends -->
+
+            </div>
+            <!-- row fluid ends -->
+          </div>
+          <!-- container fluid ends -->
+
+          <div id="push"></div>
+        </div>
+
+    <div id="footer">
+      <div class="container" style="margin-left:20px;">
+         <p style="float:left;margin:18px 20px 0 0;">Your progress</p>
+
+        <div class="progress" data-ng-controller="ProgressBarController">
+          <div class="bar" style="width: {{ percentCompleted }}%;"></div>
+        </div>
+
       </div>
-
-      <section id="ng-view" role="main" data-ng-view data-ng-animate="{enter: 'view-enter', leave: 'view-leave'}"></section>
     </div>
 
     <script data-main="scripts/main" src="components/requirejs/require.js"></script>
