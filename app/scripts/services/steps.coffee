@@ -1,10 +1,11 @@
 define ['app'], (App) ->
 
   class StepsService
-    constructor: ($resource, $http, AppCache) ->
+    constructor: ($resource, $http, $rootScope, AppCache) ->
       @Step = $resource 'data/steps.json'
       @http = $http
       @cache = AppCache
+      @rootScope = $rootScope
 
     # Gets all steps.
     all: (respond) -> 
@@ -12,13 +13,26 @@ define ['app'], (App) ->
 
       if steps
         respond steps
+        @_initStatus(step) for step in steps
       else
         @Step.query (steps) =>
           @cache.put 'steps', steps
+          @_initStatus(step) for step in steps
           respond steps
 
-    verify: (step, respond) ->
-      @http.get('data/answer.json').then((resp) ->
+    _initStatus: (step) ->
+      # Check if this step can be marked as done (no questions).
+      if not step.choices.length and not step.question
+        step.done = true
+        @rootScope.$emit 'onStepComplete', step
+
+    verify: (step, respond) =>
+      @http.get('data/answer.json').then((resp) =>
+        # Mark step as completed and emit event.
+        if resp.data.correct
+          step.done = true
+          @rootScope.$emit 'onStepComplete', step
+
         respond resp.data
       )
 

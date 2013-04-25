@@ -2,7 +2,7 @@ require
   paths:
     'jquery': '../components/jquery/jquery'
     'underscore': '../components/underscore/underscore'
-    'angular': '../components/angular/angular'
+    'angular': '../vendor/angular'
     'angular-resource': '../components/angular-resource/angular-resource'
     'angular-bootstrap': '../components/angular-bootstrap/ui-bootstrap'
   shim:
@@ -30,6 +30,7 @@ require
 
     # Factories
     'factories/cache'
+    'factories/calculate_completion'
 
     # Routes
     'routes'
