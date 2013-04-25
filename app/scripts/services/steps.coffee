@@ -22,7 +22,7 @@ define ['app'], (App) ->
 
     _initStatus: (step) ->
       # Check if this step can be marked as done (no questions).
-      if not step.choices.length and not step.question
+      if not step.choices.length and not step.is_text_question
         step.done = true
         @rootScope.$emit 'onStepComplete', step
 

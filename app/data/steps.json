@@ -5,6 +5,7 @@
     "title": "Go do this",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     "choices": [],
+    "is_text_question": false,
     "done": false,
     "previous": null,
     "next": 43
@@ -32,6 +33,7 @@
         "text": "What do you mean? An African or European swallow?"
       }
     ],
+    "is_text_question": false,
     "done": false,
     "previous": 42,
     "next": 44
@@ -42,6 +44,7 @@
     "title": "Fill out some forms",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     "choices": [],
+    "is_text_question": true,
     "done": false,
     "previous": 43,
     "next": null
