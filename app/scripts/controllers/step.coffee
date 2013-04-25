@@ -10,20 +10,20 @@ define ['app', 'underscore'], (App, _) ->
       
       # Navigation for prev/next.
       $scope.prev = -> 
-        $location.url '/steps/' + $scope.prevStep.number
+        $location.url "/steps/#{$scope.prevStep.number}"
 
       $scope.next = -> 
-        $location.url '/steps/' + $scope.nextStep.number
+        $location.url "/steps/#{$scope.nextStep.number}"
 
       $scope.goto = (num) -> 
-        $location.url '/steps/' + num
+        $location.url "/steps/#{num}"
+
+      $scope.finish = ->
+        $location.url '/finished'
        
       ##################
       # Initialization #
       ##################
-
-      # Sort by step number in ascending order.
-      steps = _.sortBy steps, 'number'
 
       $rootScope.$emit 'onStepsLoaded', steps
       $scope.steps = steps
@@ -41,13 +41,7 @@ define ['app', 'underscore'], (App, _) ->
       # Check if we've completed the previous step first.
       # If not, then kick back to the first incomplete step.
       if $scope.prevStep and not $scope.prevStep.done
-        firstIncompleteStep = steps[0]  # Defaults to first step.
-        for step in steps
-          unless step.done
-            firstIncompleteStep = step
-            break
-
-        $scope.goto firstIncompleteStep.number
+        $scope.goto(StepsService.getFirstIncomplete(steps).number or steps[0].number)
 
 
       # This step may already be done, therefore verified.

@@ -15,6 +15,9 @@ define ['app'], (App) ->
         respond steps
       else
         @Step.query (steps) =>
+          # Sort by step number in ascending order.
+          steps = _.sortBy steps, 'number'
+
           @cache.put 'steps', steps
           respond steps
 
@@ -36,6 +39,16 @@ define ['app'], (App) ->
 
           respond resp.data
         )
+
+    # Assume that steps is sorted, which the should be if loaded
+    # from this service. Returns `null` if all are done.
+    getFirstIncomplete: (steps) ->
+      firstIncompleteStep = null  # Defaults to first step.
+      for step in steps
+        unless step.done
+          firstIncompleteStep = step
+          break
+      return firstIncompleteStep
 
 
   App.service 'StepsService', StepsService

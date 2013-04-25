@@ -24,6 +24,7 @@ require
     'controllers/welcome'
     'controllers/progressbar'
     'controllers/step'
+    'controllers/finish'
 
     # Services
     'services/steps'
