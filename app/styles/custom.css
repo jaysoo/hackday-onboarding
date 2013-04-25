@@ -175,9 +175,19 @@ h1{
 #footer {
   height: 60px;
 }
-.progress{
-    margin-top:20px;
-    background:#e5e5e5;
+.progress {
+  margin-top:20px;
+  background:#e5e5e5;
+}
+.bar-wrapper {
+  position: relative;
+  height: 20px;
+}
+.level-title {
+  color: #000;
+  position: absolute;
+  right: 6px;
+  bottom: 0;
 }
 #footer {
   background-color: #f5f5f5;
@@ -201,4 +211,21 @@ h1{
 }
 .container .credit {
   margin: 20px 0;
+}
+
+.small-text {
+  font-size: 12px;
+}
+
+.nudge-top {
+  margin-top: 10px;
+}
+.nudge-right {
+  margin-right: 10px;
+}
+.nudge-bottom {
+  margin-bottom: 10px;
+}
+.nudge-left {
+  margin-left: 10px;
 }
