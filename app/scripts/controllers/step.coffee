@@ -49,12 +49,6 @@ define ['app', 'underscore'], (App, _) ->
       $scope.$watch 'step.done', (done) ->
         $scope.verified = done
 
-        # Unlocking badges
-        if done and (badgeId = $scope.step.badge)
-          BadgeService.get badgeId, (badge) ->
-            badge.unlocked = true
-            $rootScope.$emit 'onBadgeUnlock', badge
-
     # Verification for questions.
     $scope.verify = (step) ->
       StepsService.verify step

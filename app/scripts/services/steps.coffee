@@ -1,17 +1,19 @@
 define ['app'], (App) ->
 
   class StepsService
-    constructor: ($resource, $http, $rootScope, AppCache) ->
+    constructor: ($resource, $http, $rootScope, AppCache, BadgeService) ->
       @Step = $resource 'data/steps.json'
       @http = $http
       @cache = AppCache
       @rootScope = $rootScope
+      @BadgeService = BadgeService
 
     # Gets all steps.
     all: (respond) ->
       steps = @cache.get 'steps'
 
       if steps
+        @updateBadgeStatus(step) for step in steps
         respond?(steps)
       else
         @Step.query (steps) =>
@@ -19,13 +21,15 @@ define ['app'], (App) ->
           steps = _.sortBy steps, 'number'
 
           @cache.put 'steps', steps
+          @updateBadgeStatus(step) for step in steps
           respond?(steps)
 
-    markDone: (step) ->
+    markDone: (step) =>
       # Check if this step can be marked as done (no questions).
       step.done = true
       step.incorrect = false
       @rootScope.$emit 'onStepComplete', step
+      @updateBadgeStatus step
 
     verify: (step, respond) =>
       @markDone(step) if step.type is 'task'
@@ -49,6 +53,13 @@ define ['app'], (App) ->
           firstIncompleteStep = step
           break
       return firstIncompleteStep
+
+    updateBadgeStatus: (step) =>
+      # Unlocking badges
+      if step.done and (badgeId = step.badge)
+        @BadgeService.get badgeId, (badge) =>
+          badge.unlocked = true
+          @rootScope.$emit 'onBadgeUnlock', badge
 
 
   App.service 'StepsService', StepsService
