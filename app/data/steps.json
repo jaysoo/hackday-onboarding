@@ -6,7 +6,7 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     "type": "task",
     "choices": [],
-    "done": false,
+    "done": true,
     "previous": null,
     "next": 43
   },
@@ -34,7 +34,8 @@
         "text": "What do you mean? An African or European swallow?"
       }
     ],
-    "done": false,
+    "choice": 4,
+    "done": true,
     "previous": 42,
     "next": 44
   },
