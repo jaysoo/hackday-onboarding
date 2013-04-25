@@ -44,13 +44,19 @@
         </div>
 
     <div id="footer">
-      <div class="container" style="margin-left:20px;">
-         <p style="float:left;margin:18px 20px 0 0;">Your progress</p>
+      <div class="container" style="margin-left:20px;" data-ng-controller="ProgressBarController">
+          <p class="pull-left" style="margin:18px 20px 0 0;">
+            <span data-ng-hide="isFinished">
+              Your progress
+            </span>
+            <span data-ng-show="isFinished" class="text-success">
+              You're done!
+            </span>
+          </p>
 
-        <div class="progress" data-ng-controller="ProgressBarController">
+        <div class="progress">
           <div class="bar" data-ng-class="{'bar-success': isFinished}" style="width: {{ percentCompleted }}%;"></div>
         </div>
-
       </div>
     </div>
 
