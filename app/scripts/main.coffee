@@ -26,10 +26,12 @@ require
     'controllers/step'
     'controllers/finish'
     'controllers/level'
+    'controllers/badge'
 
     # Services
     'services/steps'
     'services/profile'
+    'services/badges'
 
     # Factories
     'factories/cache'

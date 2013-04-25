@@ -39,48 +39,20 @@
           <div class="span3 offset1 sashbar">
             <h2>Achievements</h2>
             
-            <div class="badge-wrapper">
+            <div class="badge-wrapper" data-ng-controller="BadgeController">
               
-              <div class="badge-item">
+              <div class="badge-item" data-ng-repeat="badge in badges" ng-class="{grayscale: !badge.unlocked}">
                 <div class="badge-icon">  
-                  <img src="img/envelope.png" />
+                  <img data-ng-src="{{ badge.image_url }}" />
                 </div>
                 <!-- badge image ends -->
                 <div class="badge-text">
-                  <h3>Envelope</h3>
-                  <p>You unlocked the envelope!</p>
+                  <h3>{{ badge.title }}</h3>
+                  <p data-ng-show="badge.unlocked">You unlocked the {{ badge.title }}!</p>
                 </div>
                 <!-- badge icon ends -->  
               </div>
               <!-- badge item ends -->
-
-              <div class="badge-item">
-                <div class="badge-icon">  
-                  <img src="img/historian.png" />
-                </div>
-                <!-- badge image ends -->
-                <div class="badge-text">
-                  <h3>Historian</h3>
-                  <p>You unlocked the envelope!</p>
-                </div>
-                <!-- badge icon ends -->  
-              </div>
-              <!-- badge item ends -->
-
-
-              <div class="badge-item grayscale">
-                <div class="badge-icon">  
-                  <img src="img/mughunter.png" />
-                </div>
-                <!-- badge image ends -->
-                <div class="badge-text">
-                  <h3>Mughunter</h3>
-                  <p>You unlocked the envelope!</p>
-                </div>
-                <!-- badge icon ends -->  
-              </div>
-              <!-- badge item ends -->
-
              </div> 
              <!-- badge wrapper ends -->
 
