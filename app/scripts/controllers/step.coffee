@@ -4,25 +4,61 @@ define ['app', 'underscore'], (App, _) ->
 
     # Retrieve all steps from the service.
     StepsService.all (steps) ->
-      $rootScope.$emit 'onStepsLoaded', steps
-      $scope.steps = steps
-      $scope.step = _.find steps, (step) -> step.number is Number($routeParams.stepNum)
-
-      # This step may already be done, therefore verified.
-      $scope.verified = $scope.step.done
-
-      # Get previous and next steps (if exist).
-      if $scope.step.next
-        $scope.nextStep = _.find steps, (step) -> step.id is $scope.step.next
-      if $scope.step.previous
-        $scope.prevStep = _.find steps, (step) -> step.id is $scope.step.previous
-
+      ######################
+      # Controller methods #
+      ######################
+      
       # Navigation for prev/next.
       $scope.prev = -> 
         $location.url '/steps/' + $scope.prevStep.number
 
       $scope.next = -> 
         $location.url '/steps/' + $scope.nextStep.number
+
+      $scope.goto = (num) -> 
+        $location.url '/steps/' + num
+       
+      ##################
+      # Initialization #
+      ##################
+
+      # Sort by step number in ascending order.
+      steps = _.sortBy steps, 'number'
+
+      $rootScope.$emit 'onStepsLoaded', steps
+      $scope.steps = steps
+
+      # Find the step we're on.
+      $scope.step = _.find steps, (step) -> step.number is Number($routeParams.stepNum)
+
+      # Get previous and next steps (if exist).
+      if $scope.step.next
+        $scope.nextStep = _.find steps, (step) -> step.id is $scope.step.next
+
+      if $scope.step.previous
+        $scope.prevStep = _.find steps, (step) -> step.id is $scope.step.previous
+
+      # Check if we've completed the previous step first.
+      # If not, then kick back to the first incomplete step.
+      if $scope.prevStep and not $scope.prevStep.done
+        firstIncompleteStep = steps[0]  # Defaults to first step.
+        for step in steps
+          unless step.done
+            firstIncompleteStep = step
+            break
+
+        $scope.goto firstIncompleteStep.number
+
+
+      # This step may already be done, therefore verified.
+      $scope.verified = $scope.step.done
+
+      # Global events when user answers a question.
+      $rootScope.$on 'onIncorrectResponse', ->
+        $scope.incorrect = true
+
+      $rootScope.$on 'onStepComplete', ->
+        $scope.incorrect = false
 
     # Verification for questions.
     $scope.verify = (step) ->

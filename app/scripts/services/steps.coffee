@@ -13,14 +13,12 @@ define ['app'], (App) ->
 
       if steps
         respond steps
-        @_initStatus(step) for step in steps
       else
         @Step.query (steps) =>
           @cache.put 'steps', steps
-          @_initStatus(step) for step in steps
           respond steps
 
-    _initStatus: (step) ->
+    updateStatus: (step) ->
       # Check if this step can be marked as done (no questions).
       if not step.choices.length and not step.is_text_question
         step.done = true
@@ -28,13 +26,16 @@ define ['app'], (App) ->
 
     verify: (step, respond) =>
       @http.get('data/answer.json').then((resp) =>
-        # Mark step as completed and emit event.
-        if resp.data.correct
-          step.done = true
-          @rootScope.$emit 'onStepComplete', step
+          # Mark step as completed and emit event.
+          if resp.data.correct
+            @updateStatus(step)
+            step.done = true
+            @rootScope.$emit 'onStepComplete', step
+          else
+            @rootScope.$emit 'onIncorrectResponse', step
 
-        respond resp.data
-      )
+          respond resp.data
+        )
 
 
   App.service 'StepsService', StepsService
