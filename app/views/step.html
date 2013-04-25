@@ -11,7 +11,7 @@
           ng-model="$parent.step.choice" />
         {{ choice.text }}
       </label>
-      <button class="btn btn-success">Check</button>
+      <button class="btn btn-success" ng-disabled="!step.choice" >Check</button>
     </form>
   </div>
 
