@@ -6,11 +6,12 @@ define ['app'], (App) ->
     randomPerson = ->
       len = $scope.people.length
       index = parseInt(Math.random() * len, 10)
-      $scope.person = $scope.people[index]
+      $rootScope.person = $scope.people[index]
+      $rootScope.$apply() unless $rootScope.$$phase
 
     $scope.start = ->
       randomPerson()
-      timer = setInterval randomPerson, 10000
+      timer = setInterval randomPerson, 6000
 
     $scope.stop = ->
       clearInterval timer

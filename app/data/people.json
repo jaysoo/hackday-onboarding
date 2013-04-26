@@ -1,7 +1,54 @@
 [
+	{
+      "name": "Adam Rotman",
+      "trivia": "Is a degenerate gambler. Has also been shaving since he was in grade 8.",
+      "img": "img/adam.jpg"
+ 	},
+  	{
+      "name": "Brian Irish",
+      "trivia": "Is obsessed with Futurama.",
+      "img": "img/brian.jpg"
+    },
+  	{
+      "name": "Brooke Aguanno",
+      "trivia": "Can ride a unicycle.",
+      "img": "img/brooke.jpg"
+  	},
+  	{
+      "name": "Dieter Limeback",
+      "trivia": "Once performed at the Montreal Jazz Festival.",
+      "img": "img/dietre.jpg"
+    },
+  	{
+      "name": "James Lochrie",
+      "trivia": "Repairs classic motorcycles.",
+      "img": "img/james_L.jpg"
+  	},
+  	{
+      "name": "Jenn Faya",
+      "trivia": "Can throw a ball faster than any guy in the office.",
+      "img": "img/jennF.jpg"
+  	}, 
+    {
+      "name": "Jude Haines",
+      "trivia": "Was electrocuted twice.",
+      "img": "img/jude.jpg"
+    }, 
   {
-    "name": "Kevin Lee",
-    "trivia": "Kevin, has loved Hello Kitty since he was like 5 years old. omg!",
-    "img": "http://f.cl.ly/items/2x2S0o1D1R1M3n2q2C2t/Screen%20Shot%202013-04-25%20at%208.44.15%20PM.png"
-  }
+      "name": "Katie Hrycak",
+      "trivia": "Was once bitten by a penguin.",
+      "img": "img/katie.jpg"
+  	}, 
+  	{
+    
+      "name": "Michael Frankel",
+      "trivia": "Has an enormous speedo collection.",
+      "img": "img/M_frankel.jpg"
+    
+    }, 
+    {
+      "name": "Vince Puzzella",
+      "trivia": "Worked for Ashley Madison.",
+      "img": "img/vince.jpg"
+    }
 ]
