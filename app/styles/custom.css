@@ -1,7 +1,3 @@
-
-/*
- * APP STYLES
- */
 /* ==========================================================================
    Imports / Fonts / Icons
    ========================================================================== */
@@ -140,6 +136,12 @@ h1{
   font-size:66px;
   line-height:1.1;
 }
+.main p{
+    margin-bottom: 20px;
+    font-size: 21px;
+    font-weight: 200;
+    line-height: 1.4;
+}
 .btn-wave {
     color: #fff;
     text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
@@ -260,16 +262,15 @@ h1{
     float:left;
     margin-right:20px;
 }
-
 #user {
-  position: fixed;
-  background-color: #fff;
-  padding: 5px;
-  top: 10px;
-  left: 30px;
+  color:#1c2f3b;
+  margin-top:20px;
   -moz-transition: all linear 1s;
   -webkit-transition: all linear 1s;
   transition: all linear 1s;
+}
+.all-tasks{
+    margin-left:20px;
 }
 #login {
   position: absolute;
