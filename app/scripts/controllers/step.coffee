@@ -31,6 +31,12 @@ define ['app', 'underscore'], (App, _) ->
       # Find the step we're on.
       $scope.step = _.find steps, (step) -> step.number is Number($routeParams.stepNum)
 
+      # Update the active step
+      _.each steps, (step) ->
+        unless step is $scope.step
+          step.active = false
+      $scope.step.active = true
+
       # Get previous and next steps (if exist).
       if $scope.step.next
         $scope.nextStep = _.find steps, (step) -> step.id is $scope.step.next

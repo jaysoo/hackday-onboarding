@@ -26,10 +26,12 @@ require
     'controllers/app'
     'controllers/badge'
     'controllers/finish'
+    'controllers/fun_facts'
     'controllers/level'
     'controllers/login'
     'controllers/progressbar'
     'controllers/step'
+    'controllers/steps_nav'
     'controllers/welcome'
 
     # Services

@@ -299,7 +299,7 @@ h1{
   height: 60px;
   transition: height linear 1s;
 }
-#footer.notready { 
+#footer.notready {
   height: 0px;
 }
 #footer{
@@ -377,4 +377,14 @@ h1{
 .app-loading-animation,
 .app-loading-animation.loading {
   opacity: 1;
+}
+
+#tasks .task-done {
+  text-decoration: line-through;
+}
+#tasks .task-locked {
+  color: #999;
+}
+#tasks .task-active {
+  font-weight: bold;
 }

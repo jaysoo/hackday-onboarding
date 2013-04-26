@@ -4,6 +4,7 @@
     "number": 1,
     "title": "Go do this",
     "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
+    "img": "img/red_carpet.png",
     "type": "task",
     "choices": [],
     "choice": null,
@@ -17,6 +18,7 @@
     "number": 2,
     "title": "Answer this",
     "description": "What is the air-speed velocity of an unladen swallow?",
+    "img": null,
     "type": "multiple_choice",
     "choices": [
       {
@@ -47,6 +49,7 @@
     "number": 3,
     "title": "Fill out some forms",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "img": null,
     "type": "text",
     "choices": [],
     "choice": null,

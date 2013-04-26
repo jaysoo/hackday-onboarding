@@ -61,14 +61,14 @@
 
             <h2 style="margin-top:0px;">Have you met?</h2>
 
-            <div class="badge-item">
+            <div class="badge-item" data-ng-controller="FunFactsController">
                 <div class="badge-icon">  
-                  <img src="http://f.cl.ly/items/2x2S0o1D1R1M3n2q2C2t/Screen%20Shot%202013-04-25%20at%208.44.15%20PM.png" width="80" style="border-radius:50px;" />
+                  <img data-ng-src="{{ person.img }}" width="80" style="border-radius:50px;" />
                 </div>
                 <!-- badge image ends -->
                 <div class="badge-text">
-                  <h3>Kevin Lee</h3>
-                  <p>Kevin, has loved Hello Kitty since he was like 5 years old...omg! </p>
+                  <h3>{{ person.name }}</h3>
+                  <p>{{ person.trivia }}</p>
                 </div>
                 <!-- badge icon ends -->  
               </div>
@@ -92,8 +92,14 @@
       <div class="btn-group dropup pull-right all-tasks" style="margin-top:15px;margin-right:20px;">
         <button class="btn primary">All Tasks</button>
         <button class="btn primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-        <ul class="dropdown-menu pull-right">
-          <li><a href="#">Task Step Title Here</a></li>
+        <ul id="tasks" class="dropdown-menu pull-right" data-ng-controller="StepsNavController">
+          <li data-ng-repeat="step in steps">
+            <a href="javascript:void(0)"
+                data-ng-click="goto(step)"
+                data-ng-class="{'task-done': step.done, 'task-locked': step.locked, 'task-active': step.active}">
+              {{ step.title }}
+            </a>
+          </li>
         </ul>
       </div>
 
