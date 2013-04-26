@@ -29,19 +29,11 @@
         (<a href="javascript:void(0)" data-ng-click="logout()">logout</a>)
       </div>
 
-      <div class="container" style="padding-right:0;padding-left:40px;">
+      <div class="container" style="padding-right:0;padding-left:20px;">
         <div class="row">
 
           <!-- Begin page content -->
           <div class="span11 main">
-            <!--<div class="sections">
-            <ul>
-              <li><a href="#">Admin</a></li>
-              <li><a href="#">Social</a></li>
-              <li><a href="#">Training</a></li>
-            </ul>
-            </div>
-            <div class="clearer"></div>-->
             <div id="ng-view" role="main" data-ng-view data-ng-animate="{enter: 'view-enter', leave: 'view-leave'}"></div>
           </div>
 
@@ -51,6 +43,7 @@
             <h2>Achievements</h2>
             
             <div class="badge-wrapper" data-ng-controller="BadgeController">
+              
               <div class="badge-item" data-ng-repeat="badge in badges" ng-class="{grayscale: !badge.unlocked}">
                 <div class="badge-icon">
                   <img data-ng-src="{{ badge.image_url }}" width="80" />
@@ -83,8 +76,6 @@
                 <!-- badge icon ends -->  
               </div>
               <!-- badge item ends -->
-
-
 
             <span class="stitches"></span>
             <span class="ripped"></span>
@@ -123,7 +114,7 @@
         </div>
 
         <span class="level-title small-text" data-ng-controller="LevelController">{{ profile.level_title }}</span>
-
+      </div>
       </div>
      </div>
 
