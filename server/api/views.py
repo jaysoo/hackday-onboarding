@@ -101,3 +101,19 @@ class TaskResourceView(View, Resource):
         task['fields']['number'] = task['fields']['number'] + 1
 
       return HttpResponse(self.to_json(tasks_list), mimetype='application/json', status=200)
+
+
+class BadgeResourceView(View, Resource):
+    serializer = PythonSerializer()
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, *args, **kwargs):
+        return super(BadgeResourceView, self).dispatch(*args, **kwargs)
+
+    def get(self, request, instance_id, *args, **kwargs):
+      self.authenticate(request)
+
+      badges = Badge.objects.all()
+      badge_list = self.serializer.serialize(badges)
+
+      return HttpResponse(self.to_json(badge_list), mimetype='application/json', status=200)

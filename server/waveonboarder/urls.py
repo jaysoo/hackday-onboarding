@@ -13,6 +13,7 @@ from api.views import *
 
 urlpatterns = patterns('',
     url(r'^api/tasks/(?:(?P<instance_id>\d+)/)?$', TaskResourceView.as_view(), name='api-task-resource'),
+    url(r'^api/badges/(?:(?P<instance_id>\d+)/)?$', BadgeResourceView.as_view(), name='api-badge-resource'),
     url(r'^api/login/?$', LoginResourceView.as_view(), name='api-login-resource'),
     url(r'^api/logout/?$', LogoutResourceView.as_view(), name='api-logout-resource'),
 
