@@ -16,6 +16,6 @@ define ['app', 'underscore'], (App, _) ->
 
     $rootScope.$on 'onStepComplete', (evt, step) ->
       StepsService.get step.next, (nextStep) ->
-        nextStep.locked = false
+        nextStep?.locked = false
 
   App.controller 'StepsNavController', StepsNavController
