@@ -1,9 +1,11 @@
 define [
     'angular'
-    'angular-resource'
     'angular-bootstrap'
-  ], (angular) -> 
+    'angular-cookies'
+    'angular-resource'
+  ], (angular) ->
     return angular.module('app', [
+      'ngCookies'
       'ngResource'
       'ui.bootstrap'
     ])

@@ -14,7 +14,7 @@ define ['app'], (App) ->
 
       if steps
         @updateBadgeStatus(step) for step in steps
-        @rootScope.$emit 'onStepsLoaded', steps
+        @rootScope.$broadcast 'onStepsLoaded', steps
         respond?(steps)
       else
         @Step.query (steps) =>
@@ -23,14 +23,14 @@ define ['app'], (App) ->
 
           @cache.put 'steps', steps
           @updateBadgeStatus(step) for step in steps
-          @rootScope.$emit 'onStepsLoaded', steps
+          @rootScope.$broadcast 'onStepsLoaded', steps
           respond?(steps)
 
     markDone: (step) =>
       # Check if this step can be marked as done (no questions).
       step.done = true
       step.incorrect = false
-      @rootScope.$emit 'onStepComplete', step
+      @rootScope.$broadcast 'onStepComplete', step
       @updateBadgeStatus step
 
     verify: (step, respond) =>

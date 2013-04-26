@@ -2,16 +2,18 @@ require
   paths:
     'jquery': '../components/jquery/jquery'
     'underscore': '../components/underscore/underscore'
-    'angular': '../vendor/angular'
-    'angular-resource': '../components/angular-resource/angular-resource'
+    'angular': '../components/angular/angular'
     'angular-bootstrap': '../components/angular-bootstrap/ui-bootstrap'
+    'angular-cookies': '../components/angular-cookies/angular-cookies'
+    'angular-resource': '../components/angular-resource/angular-resource'
   shim:
     'underscore':
       exports: '_'
     'angular':
       exports: 'angular'
-    'angular-resource': ['angular']
     'angular-bootstrap': ['angular']
+    'angular-cookies': ['angular']
+    'angular-resource': ['angular']
   [
     # Third party stuff
     'require'
@@ -21,23 +23,30 @@ require
     'app'
 
     # Controllers
-    'controllers/welcome'
-    'controllers/progressbar'
-    'controllers/step'
+    'controllers/app'
+    'controllers/badge'
     'controllers/finish'
     'controllers/level'
-    'controllers/badge'
+    'controllers/login'
+    'controllers/progressbar'
+    'controllers/step'
+    'controllers/welcome'
 
     # Services
-    'services/steps'
-    'services/profile'
     'services/badges'
+    'services/profile'
+    'services/steps'
 
     # Factories
+    'factories/apploading'
     'factories/cache'
     'factories/calculate_completion'
 
     # Routes
     'routes'
+
+    # Things to run immediately
+    'run'
+
   ], (require, angular) ->
     angular.bootstrap document, ['app']

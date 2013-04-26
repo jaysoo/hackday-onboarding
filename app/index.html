@@ -17,9 +17,17 @@
   </head>
 
   <body>
+    <span class="app-loading-container">
+      <span class="app-loading-animation ready" data-ng-class="status"></span>
+    </span>
 
     <!-- wrap -->
-    <div id="wrap">
+    <div id="wrap" class="hide" data-ng-controller="AppController" data-ng-class="{show: initialized, hide: !initialized}">
+      <div id="user" class="muted hide" data-ng-class="{hide: !loggedUser, show: loggedUser}">
+        Logged in as <strong>{{ loggedUser.name }}</strong>
+        (<a href="javascript:void(0)" data-ng-click="logout()">logout</a>)
+      </div>
+
       <div class="container-fluid" style="padding-right:0;padding-left:40px;">
         <div class="row-fluid">
 
@@ -36,7 +44,7 @@
             <div id="ng-view" role="main" data-ng-view data-ng-animate="{enter: 'view-enter', leave: 'view-leave'}"></div>
           </div>
 
-          <div class="span3 offset1 sashbar">
+          <div class="span3 offset1 sashbar" data-ng-class="{notready: !loggedUser}">
             <h2>Achievements</h2>
             
             <div class="badge-wrapper" data-ng-controller="BadgeController">
@@ -71,13 +79,13 @@
           <div id="push"></div>
         </div>
 
-    <div id="footer">
-      <div class="container" style="margin-left:20px;" data-ng-controller="ProgressBarController">
+    <div id="footer" data-ng-class="{notready: !loggedUser}">
+      <div id="progress" class="container" style="margin-left:20px;" data-ng-controller="ProgressBarController" >
         <p class="pull-left" style="margin:18px 20px 0 0;">
           <span data-ng-hide="isFinished">
             Your progress
           </span>
-          <span data-ng-show="isFinished" class="text-success">
+          <span data-ng-show="isFinished" class="text-success" style="display:none">
             You're done!
           </span>
         </p>

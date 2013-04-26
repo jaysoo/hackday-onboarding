@@ -37,7 +37,7 @@ Install client-side JavaScript components:
 Running
 -------
 
-You can start the server using the `grunt` command.
+You can start the server using the `grunt --force` command.
 
 Todo page: [http://localhost:9001/app/](http://localhost:9001/app/)
 

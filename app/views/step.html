@@ -24,6 +24,14 @@
           </label>
           <button class="btn btn-success"
             data-ng-disabled="!step.choice || inProgress || verified" >Check</button>
+
+          <span data-ng-show="verified" class="text-success">
+            <i class="icon-ok"></i>
+          </span>
+
+          <span data-ng-show="step.incorrect" class="text-error">
+            <i class="icon-remove"></i>
+          </span>
         </span>
 
         <span data-ng-switch-when="text">
@@ -36,9 +44,7 @@
           </label>
           <button class="btn btn-success"
             data-ng-disabled="!step.text_answer || inProgress || verified" >Check</button>
-        </span>
 
-        <span data-ng-show="step.type == 'text' || step.type == 'multiple_choice'">
           <span data-ng-show="verified" class="text-success">
             <i class="icon-ok"></i>
           </span>

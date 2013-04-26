@@ -7,7 +7,7 @@
     "type": "task",
     "choices": [],
     "choice": null,
-    "done": true,
+    "done": false,
     "previous": null,
     "next": 43,
     "badge": 17
