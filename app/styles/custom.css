@@ -246,8 +246,8 @@ h1{
   position: fixed;
   background-color: #fff;
   padding: 5px;
-  top: 0;
-  left: 10px;
+  top: 10px;
+  left: 30px;
   -moz-transition: all linear 1s;
   -webkit-transition: all linear 1s;
   transition: all linear 1s;
@@ -334,6 +334,7 @@ h1{
 /* Loading */
 
 .app-loading-container {
+  z-index: 9000;
   position: absolute;
   top: 10px;
   left: 10px;
