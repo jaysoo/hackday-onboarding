@@ -1,5 +1,10 @@
 {% extends 'common/layout.html' %}
 {% load commontags %}
+{% load wysiwyg %}
+
+{% block extrahead %}
+{% wysiwyg_setup %}
+{% endblock %}
 
 {% block content %}
 <div class="page-header">
@@ -50,5 +55,6 @@
         <a class="btn btn-link" href="{% url 'tasks' %}">Cancel</a>
     </div>
     {% csrf_token %}
+    {% wysiwyg_editor "id_description" %}
 </form>
 {% endblock %}
