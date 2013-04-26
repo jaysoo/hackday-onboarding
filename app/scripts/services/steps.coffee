@@ -75,7 +75,9 @@ define ['app'], (App) ->
     initStuff: (steps) =>
       prev = null
       next = null
+      number = 1
       for step in steps
+        step.number = number++
         if step.choices?.length
           step.type = 'multiple_choice'
         else if step.open_ended
