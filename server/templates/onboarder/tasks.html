@@ -30,7 +30,7 @@
                 </div>
                 <div class="task-details">
                     <h4><a href="{% url 'edit_task' t.id %}">{{ t.title|truncatechars:30 }}</a></h4>
-                    <p>{{ t.description|removetags:"a img p"|truncatechars:50 }}</p>
+                    <p>{{ t.description|removetags:"a img p span div"|truncatechars:50 }}</p>
                 </div>
             </div>
         {% empty %}

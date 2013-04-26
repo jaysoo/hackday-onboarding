@@ -1,4 +1,6 @@
 from django.utils import simplejson as json
+from django.template.defaultfilters import removetags
+
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from django.core.serializers.json import DjangoJSONEncoder
@@ -94,6 +96,7 @@ class TaskResourceView(View, Resource):
       for task in tasks_list:
         choices = Choice.objects.filter(task=task['pk'])
         choice_list = self.flatten(self.serializer.serialize(choices))
+        task['fields']['description'] = removetags(task['fields']['description'], 'span')
         task['fields']['choices'] = choice_list
         task['fields']['number'] = task['fields']['number'] + 1
 
