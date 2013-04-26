@@ -1,0 +1,52 @@
+{% extends 'common/layout.html' %}
+{% load commontags %}
+
+{% block content %}
+<div class="page-header">
+    <h1>{% block pagetitle %}{% endblock %}</h1>
+    <p class="lead">{% block pagelead %}{% endblock %}</p>
+</div>
+<form method="post" id="task-form">
+    <div class="row">
+        <div class="span6">
+            {% display_field form.title %}
+            <div class="pull-right pre-first-day">
+                <label>Pre-first-day-task?</label>
+                {{ form.pre_step }}
+            </div>
+            {% display_field form.description %}
+            {% display_field form.badge %}
+            {% display_field form.image %}
+        </div>
+         <div class="span8 profile-list">
+            <div class="span8">
+                <h4>Profiles to which this task is assigned #greatgrammarbro</h4>
+                {% if form.errors.profiles %}
+                <p class="alert alert-error gutter-right2">Please select at least one profile.</p>
+                {% endif %}
+            </div>
+            {{ form.profiles }}
+        </div>
+        <div class="span8 mc">
+            <div class="span8">
+                <h4>Les choix</h4>
+                {% if form.errors.correct_choice %}
+                <p class="alert alert-error gutter-right2">Please select which choice below shall be the correct one.</p>
+                {% endif %}
+                <p class="gutter-right">Choices are optional, but if you do provide some, make sure there are at least two and that you assign one as the correct choice.</p>
+            </div>
+            {% display_field form.is_question %}
+            {% display_field form.choice1 %}
+            {% display_field form.choice2 %}
+            {% display_field form.choice3 %}
+            {% display_field form.choice4 %}
+            {{ form.correct_choice }}
+        </div>
+    </div>
+    <div class="form-actions clearfix">
+        <button type="submit" class="btn btn-primary"/>{% block buttontext %}{% endblock %}</button>
+        <a class="btn btn-link" href="{% url 'tasks' %}">Cancel</a>
+    </div>
+    {% csrf_token %}
+</form>
+{% endblock %}

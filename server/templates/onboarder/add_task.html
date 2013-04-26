@@ -1,0 +1,47 @@
+{% extends 'onboarder/_taskform.html' %}
+
+{% block pagetitle %}Create a new task{% endblock %}
+{% block pagelead %}Hey man, this is where the magic happens.{% endblock %}
+
+{% block buttontext %}Create task{% endblock %}
+
+{% block pagejs %}
+<script>
+require(['jquery'], function($) { 
+    {% if not form.errors %}
+    /* pre-check profiles */
+    if ($('.profile-list ul li input[type="checkbox"]:checked').length == 0) {
+        $('.profile-list ul li input[type="checkbox"]').each(function(i, e) { 
+            if ($(e).parent().text().trim().toLowerCase() == 'all')
+                $(e).prop('checked', true);
+        });
+    }
+    {% endif %}
+    /* setup toggle on mc choices */
+    $('.mc .input-prepend a').click(function() {
+        if (!$(this).hasClass("btn-success")) {
+            $('.mc .input-prepend a.btn-success')
+                .removeClass('btn-success')
+                .addClass('btn-danger')
+                .find('i')
+                .removeClass('icon-ok')
+                .addClass('icon-remove');
+            $(this).removeClass('btn-danger')
+                .addClass('btn-success')
+                .find('i')
+                .removeClass('icon-remove')
+                .addClass('icon-ok');
+            $('#id_correct_choice').val($(this).data('toggle'));
+        }
+        return false;
+    });
+    /* preselect */
+    $('.mc .input-prepend a').eq($('#id_correct_choice').val() - 1)
+        .removeClass('btn-danger')
+        .addClass('btn-success')
+        .find('i')
+        .removeClass('icon-remove')
+        .addClass('icon-ok');
+});
+</script>
+{% endblock %}

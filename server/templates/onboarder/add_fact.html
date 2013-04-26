@@ -1,0 +1,23 @@
+{% extends 'common/layout.html' %}
+{% load commontags %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Add a random fact</h1>
+    <p class="lead">There are squirrels in the trees.</p>
+</div>
+<form method="post" id="task-form">
+    <div class="row">
+        <div class="span6">
+            {% display_field form.person %}
+            {% display_field form.fact %}
+            {% display_field form.picture %}
+        </div>
+    </div>
+    <div class="form-actions clearfix">
+        <button type="submit" class="btn btn-primary"/>Add fact</button>
+        <a class="btn btn-link" href="{% url 'facts' %}">Cancel</a>
+    </div>
+    {% csrf_token %}
+</form>
+{% endblock %}

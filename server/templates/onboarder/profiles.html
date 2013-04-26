@@ -1,0 +1,44 @@
+{% extends "common/layout.html" %}
+{% load url from future %}
+{% load static %}
+
+{% block content %}
+
+<blockquote>
+    <p>That's a pretty fucking good milkshake. I don't know if it's worth five dollars but it's pretty fucking good.</p>
+    <small>Vincent Vega</small>
+</blockquote>
+
+<div class="row">
+    <div class="profile-list span8">
+        <h2>Profiles</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Members</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                {% for p in profiles %}
+                    <tr>
+                        <td><a href="{% url 'edit_profile' p.id %}">{{ p.name }}</a></td>
+                        <td><span class="badge badge-{% if p.member_count > 0 %}info{% else %}warning{% endif %}">{{ p.member_list|length }}</span> &nbsp;{% for member in p.member_list %}<a href="{% url 'edit_recruit' member.id %}">{{ member }}</a> {% endfor %}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="3" class="well muted"><em>No profiles. Add one.</em></td>
+                    </tr>
+                {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<a href="{% url 'add_profile' %}" class="btn btn-primary">Add a new profile</a>
+<a href="{% url 'add_recruit' %}" class="btn btn-primary">Setup a new recruit</a>
+
+<p>&nbsp;</p>
+{% endblock %}

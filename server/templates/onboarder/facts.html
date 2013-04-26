@@ -1,0 +1,43 @@
+{% extends "common/layout.html" %}
+{% load url from future %}
+{% load static %}
+
+{% block content %}
+
+<blockquote>
+    <p>I bet you could cut down on the hero factor in a place like this.</p>
+    <small>Honey Bunny</small>
+</blockquote>
+
+<div class="row">
+    <div class="facts-list span8 ">
+        <h2>Random Facts</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Who</th>
+                    <th>What</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                {% for f in facts %}
+                    <tr>
+                        <td><a href="{% url 'edit_fact' f.id %}">{{ f.person }}</a></td>
+                        <td>{{ f.fact }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="3" class="well muted"><em>No facts. Add some.</em></td>
+                    </tr>
+                {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<a href="{% url 'add_fact' %}" class="btn btn-primary">Add a random fact</a>
+
+<p>&nbsp;</p>
+{% endblock %}

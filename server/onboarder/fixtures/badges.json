@@ -1,0 +1,26 @@
+[
+  {
+    "model": "onboarder.badge",
+    "pk": 1,
+    "fields": {
+      "name": "Envelope",
+      "image": "You unlocked the envelope badge!"
+    }
+  },
+  {
+    "model": "onboarder.badge",
+    "pk": 2,
+    "fields": {
+      "name": "Historian",
+      "image": "You unlocked the historian badge!"
+    }
+  },
+  {
+    "model": "onboarder.badge",
+    "pk": 3,
+    "fields": {
+      "name": "Mughunter",
+      "image": "You unlocked the mughunter badge!"
+    }
+  }
+]

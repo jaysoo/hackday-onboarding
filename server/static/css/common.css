@@ -1,0 +1,35 @@
+/*------------------------- common.css -----------------------------
+ *
+ * Common styles
+ *
+ */
+
+@font-face { font-family: DroidSans; src: url('fonts/DroidSans.ttf'); }
+@font-face { font-family: DroidSans; font-weight: bold; src: url('fonts/DroidSans-Bold.ttf'); }
+
+body { margin-top: 60px; }
+.navbar-fixed-top .navbar-inner { padding: 0 10px; }
+.navbar i { opacity: 0.5; }
+.navbar a:hover i { opacity: 1.0; }
+.navbar li.active i { opacity: 1.0; }
+label { font-weight: bold; }
+.help-block { margin-top: 0.5em; font-size: 14px; }
+.yes-no-toggle { margin-bottom: 10px; }
+.errorlist { float: left; width: auto; }
+.gutter-right { margin-right: 20px; }
+.gutter-right2 { margin-right: 40px; }
+.pre-first-day { margin-top: -10px; }
+.mc { }
+.mc input { width: 525px; }
+#id_description { width: 550px; height: 250px; }
+.profile-list ul { list-style: none; }
+.profile-list ul li { margin-left: 15px; }
+.profile-list ul li input[type='checkbox'] { margin-top: -3px; margin-right: 2px; }
+
+.task-list { margin-left: 10px; margin-bottom: 1em; }
+.task-list .thumbnail { padding: 10px; margin-bottom: 10px; background-color: #fffaea;}
+.task-list .thumbnail .controls { visibility: hidden; }
+.task-list .thumbnail:hover .controls { visibility: visible; opacity: 0.5;}
+.task-list img { padding: 0 10px 10px 0; }
+.task-details h4 { margin-top: 2px; }
+.task-list .badges { position: relative; top: 35px; right: -50px; }

@@ -1,0 +1,18 @@
+{% extends "common/layout.html" %}
+{% load url from future %}
+
+{% block content %}
+<div id="login">
+    <h1>Sign In</h1>
+    {% if form.errors %}
+        <div class="error">Invalid username and/or password.<br/>Please try again.</div>
+    {% endif %} 
+    <form method="post" action="{% url 'auth:login' %}">
+        {% csrf_token %}
+        <div class="form-input">{{ form.username.label_tag }}{{ form.username }}</div>
+        <div class="form-input">{{ form.password.label_tag }}{{ form.password }}</div>
+        <input type="submit" value="Submit" class="submitBtn btn" /><br/>
+        <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+</div>
+{% endblock %}
