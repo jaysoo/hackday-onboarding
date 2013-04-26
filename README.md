@@ -27,7 +27,7 @@ These commands will update both NodeJS and client-side dependences. The latter p
 
 Install NodeJS dependencies:
 
-    npm install --dev
+    npm install
 
 Install client-side JavaScript components:
 
