@@ -65,9 +65,9 @@
     Next
   </a>
 
-  <button class="btn btn-primary btn-done" ng-hide="nextStep" data-ng-disabled="!verified" data-ng-click="finish()">
+  <a class="btn-next" ng-hide="nextStep" data-ng-disabled="!verified" data-ng-click="finish()">
     Done
-  </button>
+  </a>
 </div>
 
 <img data-ng-show="step.img" data-ng-src="{{ step.img }}" class="illustration" />
