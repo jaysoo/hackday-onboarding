@@ -378,9 +378,12 @@ h1{
   opacity: 1;
 }
 
-.done-task {
+#tasks .task-done {
   text-decoration: line-through;
 }
-#tasks .locked-task {
+#tasks .task-locked {
   color: #999;
+}
+#tasks .task-active {
+  font-weight: bold;
 }
