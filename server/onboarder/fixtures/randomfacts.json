@@ -1,0 +1,92 @@
+[
+  {
+    "model": "onboarder.randomfact",
+    "pk": 1,
+    "fields": {
+      "person": "Adam Rotman",
+      "fact": "Is a degenerate gambler. Has also been shaving since he was in grade 8.",
+      "picture": "adam.jpg"
+    }
+  },
+  {
+    "model": "onboarder.randomfact",
+    "pk": 2,
+    "fields": {
+      "person": "Brian Irish",
+      "fact": "Is obsessed with Futurama.",
+      "picture": "brian.jpg"
+    }
+  },
+  {
+    "model": "onboarder.randomfact",
+    "pk": 3,
+    "fields": {
+      "person": "Brooke Aguanno",
+      "fact": "Can ride a unicycle.",
+      "picture": "brooke.jpg"
+    }
+  },
+  {
+    "model": "onboarder.randomfact",
+    "pk": 4,
+    "fields": {
+      "person": "Dieter Limeback",
+      "fact": "Once performed at the Montreal Jazz Festival.",
+      "picture": "dietre.jpg"
+    }
+  },
+  {
+    "model": "onboarder.randomfact",
+    "pk": 5,
+    "fields": {
+      "person": "James Lochrie",
+      "fact": "Repairs classic motorcycles.",
+      "picture": "james_L.jpg"
+    }
+  },
+  {
+    "model": "onboarder.randomfact",
+    "pk": 6,
+    "fields": {
+      "person": "Jenn Faya",
+      "fact": "Can throw a ball faster than any guy in the office.",
+      "picture": "jennF.jpg"
+    }
+  }, 
+  {
+    "model": "onboarder.randomfact",
+    "pk": 7,
+    "fields": {
+      "person": "Jude Haines",
+      "fact": "Was electrocuted twice.",
+      "picture": "jude.jpg"
+    }
+  }, 
+  {
+    "model": "onboarder.randomfact",
+    "pk": 8,
+    "fields": {
+      "person": "Katie Hrycak",
+      "fact": "Was once bitten by a penguin.",
+      "picture": "katie.jpg"
+    }
+  }, 
+  {
+    "model": "onboarder.randomfact",
+    "pk": 9,
+    "fields": {
+      "person": "Michael Frankel",
+      "fact": "Has an enormous speedo collection.",
+      "picture": "M_frankel.jpg"
+    }
+  }, 
+  {
+    "model": "onboarder.randomfact",
+    "pk": 10,
+    "fields": {
+      "person": "Vince Puzzella",
+      "fact": "Worked for Ashley Madison.",
+      "picture": "vince.jpg"
+    }
+  }
+]
