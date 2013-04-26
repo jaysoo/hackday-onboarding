@@ -94,8 +94,10 @@
       <div class="btn-group dropup pull-right" style="margin-top:15px;margin-right:20px;">
         <button class="btn primary">All Tasks</button>
         <button class="btn primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-        <ul class="dropdown-menu pull-right">
-          <li><a href="#">Task Step Title Here</a></li>
+        <ul id="tasks" class="dropdown-menu pull-right" data-ng-controller="StepsNavController">
+          <li data-ng-repeat="step in steps">
+            <a href="javascript:void(0)" data-ng-click="goto(step)" data-ng-class="{'done-task': step.done, 'locked-task': step.locked}">{{ step.title }}</a>
+          </li>
         </ul>
       </div>
 

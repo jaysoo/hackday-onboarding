@@ -31,6 +31,7 @@ require
     'controllers/login'
     'controllers/progressbar'
     'controllers/step'
+    'controllers/steps_nav'
     'controllers/welcome'
 
     # Services

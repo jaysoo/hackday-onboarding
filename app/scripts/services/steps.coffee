@@ -26,6 +26,11 @@ define ['app'], (App) ->
           @rootScope.$broadcast 'onStepsLoaded', steps
           respond?(steps)
 
+    get: (id, respond) ->
+      @all (steps) ->
+        step = _.find steps, (step) -> step.id is id
+        respond step
+
     markDone: (step) =>
       # Check if this step can be marked as done (no questions).
       step.done = true
