@@ -12,5 +12,6 @@ define ['app'], (App) ->
       # Log user out.
       $rootScope.loggedUser = $cookies.loggedUser = undefined
 
-      # Redirect to login.
-      $location.url '/login'
+      # Refresh browser to clear everything out.
+      window.location.reload()
+
