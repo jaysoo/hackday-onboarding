@@ -1,0 +1,25 @@
+{% extends 'common/layout.html' %}
+{% load commontags %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Add a new recruit</h1>
+    <p class="lead">Go easy on 'em. They're new.</p>
+</div>
+<form method="post" id="recruit-form">
+    <div class="row">
+        <div class="span6">
+            {% display_field form.name %}
+            {% display_field form.email %}
+            {% display_field form.start_date %}
+            {% display_field form.job_title %}
+            {% display_field form.profile %}
+        </div>
+    </div>
+    <div class="form-actions clearfix">
+        <button type="submit" class="btn btn-primary"/>Create recruit</button>
+        <a class="btn btn-link" href="{% url 'profiles' %}">Cancel</a>
+    </div>
+    {% csrf_token %}
+</form>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'common/layout.html' %}
+{% load commontags %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Edit {{ recruit.name }}</h1>
+    <p class="lead">Because they obviously aren't acceptable the way they are.</p>
+</div>
+<form method="post" id="recruit-form">
+    <div class="row">
+        <div class="span8">
+            <div class="alert">{{ recruit.name }} has completed {{ recruit.tasks_completed }}/{{ recruit.profile.total_tasks }} tasks.</div>
+            {% display_field form.name %}
+            {% display_field form.email %}
+            {% display_field form.start_date %}
+            {% display_field form.job_title %}
+            {% display_field form.profile %}
+        </div>
+    </div>
+    <div class="form-actions clearfix">
+        <button type="submit" class="btn btn-primary"/>Update</button>
+        <a class="btn btn-link" href="{% url 'profiles' %}">Cancel</a>
+    </div>
+    {% csrf_token %}
+</form>
+{% endblock %}

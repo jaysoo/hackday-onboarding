@@ -1,0 +1,20 @@
+<div class="control-group {{ conf.container_class }}">
+    <div class="{{ conf.control_class }}">
+        <label class="control-label {% if required %}required{% endif %}">
+            {{ field.label }}
+        </label>
+        {{ field }}
+    </div>
+
+    {% if field.errors %}
+    <div class="{{ conf.error_class }}">
+        {% for e in field.errors %}
+            &uarr;&nbsp;&nbsp;{{ e }}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if field.help_text %}
+    <span class="help-block {{ conf.help_text_class }}">{{ field.help_text }}</span>
+    {% endif %}
+</div>

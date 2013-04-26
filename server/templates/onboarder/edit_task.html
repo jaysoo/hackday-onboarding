@@ -1,0 +1,38 @@
+{% extends 'onboarder/_taskform.html' %}
+
+{% block pagetitle %}Edit {{ task.title }}{% endblock %}
+{% block pagelead %}Less magic, more fluff.{% endblock %}
+
+{% block buttontext %}Update{% endblock %}
+
+{% block pagejs %}
+<script>
+require(['jquery'], function($) { 
+    /* setup toggle on mc choices */
+    $('.mc .input-prepend a').click(function() {
+        if (!$(this).hasClass("btn-success")) {
+            $('.mc .input-prepend a.btn-success')
+                .removeClass('btn-success')
+                .addClass('btn-danger')
+                .find('i')
+                .removeClass('icon-ok')
+                .addClass('icon-remove');
+            $(this).removeClass('btn-danger')
+                .addClass('btn-success')
+                .find('i')
+                .removeClass('icon-remove')
+                .addClass('icon-ok');
+            $('#id_correct_choice').val($(this).data('toggle'));
+        }
+        return false;
+    });
+    /* preselect */
+    $('.mc .input-prepend a').eq($('#id_correct_choice').val() - 1)
+        .removeClass('btn-danger')
+        .addClass('btn-success')
+        .find('i')
+        .removeClass('icon-remove')
+        .addClass('icon-ok');
+});
+</script>
+{% endblock %}
