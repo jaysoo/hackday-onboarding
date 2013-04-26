@@ -57,15 +57,15 @@
     </form>
   </div>
 
-  <button class="btn" data-ng-disabled="!prevStep" data-ng-click="prev()">
+  <a class="btn-prev" data-ng-class="{disabled:!prevStep}" data-ng-click="prev()">
     Previous
-  </button>
-
-  <a href="javascript:void(0)" class="btn-next" ng-show="nextStep" data-ng-disabled="!verified" data-ng-click="next()">
-    <img src="img/btn-next.png" />
   </a>
 
-  <button class="btn btn-primary" ng-hide="nextStep" data-ng-disabled="!verified" data-ng-click="finish()">
+  <a href="javascript:void(0)" class="btn-next" ng-show="nextStep" data-ng-class="{disabled:!verified}" data-ng-click="next()">
+    Next
+  </a>
+
+  <button class="btn btn-primary btn-done" ng-hide="nextStep" data-ng-disabled="!verified" data-ng-click="finish()">
     Done
   </button>
 </div>
