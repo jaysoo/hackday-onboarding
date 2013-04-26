@@ -71,14 +71,14 @@
 
             <h2 style="margin-top:0px;">Have you met?</h2>
 
-            <div class="badge-item">
+            <div class="badge-item" data-ng-controller="FunFactsController">
                 <div class="badge-icon">  
-                  <img src="http://f.cl.ly/items/2x2S0o1D1R1M3n2q2C2t/Screen%20Shot%202013-04-25%20at%208.44.15%20PM.png" width="80" style="border-radius:50px;" />
+                  <img data-ng-src="{{ person.img }}" width="80" style="border-radius:50px;" />
                 </div>
                 <!-- badge image ends -->
                 <div class="badge-text">
-                  <h3>Kevin Lee</h3>
-                  <p>Kevin, has loved Hello Kitty since he was like 5 years old...omg! </p>
+                  <h3>{{ person.name }}</h3>
+                  <p>{{ person.trivia }}</p>
                 </div>
                 <!-- badge icon ends -->  
               </div>
