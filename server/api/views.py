@@ -95,5 +95,6 @@ class TaskResourceView(View, Resource):
         choices = Choice.objects.filter(task=task['pk'])
         choice_list = self.flatten(self.serializer.serialize(choices))
         task['fields']['choices'] = choice_list
+        task['fields']['number'] = task['fields']['number'] + 1
 
       return HttpResponse(self.to_json(tasks_list), mimetype='application/json', status=200)

@@ -2,7 +2,7 @@ define ['app'], (App) ->
 
   class StepsService
     constructor: ($resource, $http, $rootScope, AppCache, BadgeService) ->
-      @Step = $resource 'data/steps.json'
+      @Step = $resource '/api/tasks/'
       @http = $http
       @cache = AppCache
       @rootScope = $rootScope
@@ -15,6 +15,7 @@ define ['app'], (App) ->
       if steps
         @updateBadgeStatus(step) for step in steps
         @rootScope.$broadcast 'onStepsLoaded', steps
+        @initStuff(steps)
         respond?(steps)
       else
         @Step.query (steps) =>
@@ -23,6 +24,7 @@ define ['app'], (App) ->
 
           @cache.put 'steps', steps
           @updateBadgeStatus(step) for step in steps
+          @initStuff(steps)
           @rootScope.$broadcast 'onStepsLoaded', steps
           respond?(steps)
 
@@ -67,6 +69,25 @@ define ['app'], (App) ->
         @BadgeService.get badgeId, (badge) =>
           badge.unlocked = true
           @rootScope.$emit 'onBadgeUnlock', badge
+
+    # Sets up the proper prev/next chain.
+    # Sets up the proper type.
+    initStuff: (steps) =>
+      prev = null
+      next = null
+      for step in steps
+        if step.choices?.length
+          step.type = 'multiple_choice'
+        else if step.open_ended
+          step.type = 'text'
+        else
+          step.type = 'task'
+
+        step.prev = prev?.number
+        prev?.next = step.number
+        prev = step
+
+      console.log steps
 
 
   App.service 'StepsService', StepsService
