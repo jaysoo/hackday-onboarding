@@ -6,7 +6,7 @@ from django.views.generic import View
 from django.core.serializers.python import Serializer as PythonSerializer
 from django.http import HttpResponse, Http404
 
-from onboarder.models import Task, NewRecruit
+from onboarder.models import *
 
 
 class Resource(object):
@@ -20,6 +20,9 @@ class Resource(object):
     Takes a output from django.core.serializers.python.Serializer
     and converts to the expected flat object format.
     """
+    return json.dumps(self.flatten(obj_list), cls=DjangoJSONEncoder)
+
+  def flatten(self, obj_list):
     r_list = []
 
     for obj in obj_list:
@@ -27,7 +30,8 @@ class Resource(object):
       r_obj = dict(r_obj.items() + obj['fields'].items())
       r_list.append(r_obj)
 
-    return json.dumps(r_list, cls=DjangoJSONEncoder)
+    return r_list
+
 
 
 class LoginResourceView(View, Resource):
@@ -82,6 +86,12 @@ class TaskResourceView(View, Resource):
     def get(self, request, instance_id, *args, **kwargs):
       self.authenticate(request)
 
-      tasks = Task.objects.all()
+      tasks = Task.objects.select_related('choice_set').all()
       tasks_list = self.serializer.serialize(tasks)
+
+      for task in tasks_list:
+        choices = Choice.objects.filter(task=task['pk'])
+        choice_list = self.flatten(self.serializer.serialize(choices))
+        task['fields']['choices'] = choice_list
+
       return HttpResponse(self.to_json(tasks_list), mimetype='application/json', status=200)
