@@ -16,6 +16,7 @@ class Task(models.Model):
     pre_step = models.BooleanField(default=False)
     badge = models.ForeignKey(Badge, blank=True, null=True, related_name='tasks')
     image = models.CharField(max_length=100, blank=True)
+    open_ended = models.BooleanField(default=False, verbose_name="Open-ended question?")
 
     class Meta:
         ordering = ['number']

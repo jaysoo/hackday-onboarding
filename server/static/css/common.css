@@ -22,6 +22,7 @@ label { font-weight: bold; }
 .mc { }
 .mc input { width: 525px; }
 #id_description { width: 550px; height: 250px; }
+#id_open_ended { margin-left: 20px; }
 .profile-list ul { list-style: none; }
 .profile-list ul li { margin-left: 15px; }
 .profile-list ul li input[type='checkbox'] { margin-top: -3px; margin-right: 2px; }
