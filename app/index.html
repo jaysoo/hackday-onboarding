@@ -47,20 +47,18 @@
 
           <div class="sashbar" data-ng-class="{notready: !loggedUser}">
 
-=======
           <div class="span3 offset1 sashbar" data-ng-class="{notready: !loggedUser}">
             <h2>Achievements</h2>
             
             <div class="badge-wrapper" data-ng-controller="BadgeController">
-
-              <div class="badge-item clearfix" data-ng-repeat="badge in badges" ng-class="{grayscale: !badge.unlocked}">
+              <div class="badge-item" data-ng-repeat="badge in badges" ng-class="{grayscale: !badge.unlocked}">
                 <div class="badge-icon">
-                  <img data-ng-src="{{ badge.image_url }}" />
+                  <img data-ng-src="{{ badge.image_url }}" width="80" />
                 </div>
                 <!-- badge image ends -->
                 <div class="badge-text">
                   <h3>{{ badge.title }}</h3>
-                  <p data-ng-show="badge.unlocked">You unlocked the {{ badge.title }}!</p>
+                  <p>You unlocked the {{ badge.title }}!</p>
                 </div>
                 <!-- badge icon ends -->  
               </div>
