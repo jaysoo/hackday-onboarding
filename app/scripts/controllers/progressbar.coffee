@@ -5,12 +5,12 @@ define ['app'], (App) ->
 
       $rootScope.$on 'onStepsLoaded', (evt, steps) ->
         $scope.steps = steps
-        $scope.percentCompleted = percentCompletion.calculateStepsCompletion $scope.steps
+        $scope.percentCompleted = percentCompletion.calculateStepsCompletion steps
 
         if $scope.percentCompleted is 100
           $scope.isFinished = true
 
-      $rootScope.$on 'onStepComplete', ->
+      $rootScope.$on 'onStepComplete', (evt, step) ->
         if $scope.steps
           $scope.percentCompleted = percentCompletion.calculateStepsCompletion $scope.steps
 

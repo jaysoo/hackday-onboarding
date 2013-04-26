@@ -4,7 +4,7 @@
     <p>{{ step.description }}</p>
 
     <form data-ng-submit="verify(step)" data-ng-switch="step.type">
-      <div class="control-group" ng-class="{error: incorrect}">
+      <div class="control-group" ng-class="{error: step.incorrect}">
         <span data-ng-switch-when="task">
           <button class="btn btn-success"
             data-ng-disabled="inProgress || verified" >Ok, I'm done</button>
@@ -15,7 +15,7 @@
 
         <span data-ng-switch-when="multiple_choice">
           <label class="checkbox" data-ng-repeat="choice in step.choices">
-            <input type="radio" name="choice" 
+            <input type="radio" name="choice"
               value="{{ choice.id }}"
               data-ng-checked="choice.id == $parent.step.choice"
               data-ng-disabled="verified"
@@ -24,11 +24,19 @@
           </label>
           <button class="btn btn-success"
             data-ng-disabled="!step.choice || inProgress || verified" >Check</button>
+
+          <span data-ng-show="verified" class="text-success">
+            <i class="icon-ok"></i>
+          </span>
+
+          <span data-ng-show="step.incorrect" class="text-error">
+            <i class="icon-remove"></i>
+          </span>
         </span>
 
         <span data-ng-switch-when="text">
           <label>
-            <input type="text" name="text_answer" 
+            <input type="text" name="text_answer"
               placeholder="Your answer here"
               value="{{ choice.id }}"
               data-ng-disabled="verified"
@@ -36,16 +44,13 @@
           </label>
           <button class="btn btn-success"
             data-ng-disabled="!step.text_answer || inProgress || verified" >Check</button>
-        </span>
 
-        <span data-ng-show="step.type == 'text' || step.type == 'multiple_choice'">
           <span data-ng-show="verified" class="text-success">
             <i class="icon-ok"></i>
-            Correct!
           </span>
 
-          <span data-ng-show="incorrect" class="text-error">
-            Wrong answer :(
+          <span data-ng-show="step.incorrect" class="text-error">
+            <i class="icon-remove"></i>
           </span>
         </span>
       </div>

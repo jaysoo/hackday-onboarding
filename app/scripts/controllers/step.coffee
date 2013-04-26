@@ -1,26 +1,26 @@
 define ['app', 'underscore'], (App, _) ->
 
-  StepController = ($scope, $location, $routeParams, $rootScope, StepsService) ->
+  StepController = ($scope, $location, $routeParams, $rootScope, StepsService, BadgeService) ->
 
     # Retrieve all steps from the service.
     StepsService.all (steps) ->
       ######################
       # Controller methods #
       ######################
-      
+
       # Navigation for prev/next.
-      $scope.prev = -> 
+      $scope.prev = ->
         $location.url "/steps/#{$scope.prevStep.number}"
 
-      $scope.next = -> 
+      $scope.next = ->
         $location.url "/steps/#{$scope.nextStep.number}"
 
-      $scope.goto = (num) -> 
+      $scope.goto = (num) ->
         $location.url "/steps/#{num}"
 
       $scope.finish = ->
         $location.url '/finished'
-       
+
       ##################
       # Initialization #
       ##################
@@ -43,21 +43,15 @@ define ['app', 'underscore'], (App, _) ->
       if $scope.prevStep and not $scope.prevStep.done
         $scope.goto(StepsService.getFirstIncomplete(steps).number or steps[0].number)
 
-
       # This step may already be done, therefore verified.
       $scope.verified = $scope.step.done
 
-      # Global events when user answers a question.
-      $rootScope.$on 'onIncorrectResponse', ->
-        $scope.incorrect = true
-
-      $rootScope.$on 'onStepComplete', ->
-        $scope.incorrect = false
+      $scope.$watch 'step.done', (done) ->
+        $scope.verified = done
 
     # Verification for questions.
     $scope.verify = (step) ->
-      StepsService.verify step, (response) ->
-        $scope.verified = response.correct
+      StepsService.verify step
 
 
   App.controller 'StepController', StepController

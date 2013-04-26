@@ -163,11 +163,20 @@ h1{
 .main{
     padding-top:30px;
 }
+.hide {
+  opacity: 0;
+}
+.show {
+  opacity: 1;
+}
 #wrap {
   min-height: 100%;
   height: auto !important;
   height: 100%;
   margin: 0 auto -60px;
+  -moz-transition: opacity linear 1s;
+  -webkit-transition: opacity linear 1s;
+  transition: opacity linear 1s;
 }
 .illustration{
     position:absolute;
@@ -185,6 +194,10 @@ h1{
     /*transform:rotate(4deg);
     -ms-transform:rotate(4deg);
     -webkit-transform:rotate(4deg);*/
+}
+.sashbar.notready {
+  overflow: hidden;
+  height: 0px;
 }
 .sashbar h2{
     margin-top:60px;
@@ -248,9 +261,45 @@ h1{
     margin-right:20px;
 }
 
+#user {
+  position: fixed;
+  background-color: #fff;
+  padding: 5px;
+  top: 10px;
+  left: 30px;
+  -moz-transition: all linear 1s;
+  -webkit-transition: all linear 1s;
+  transition: all linear 1s;
+}
+#login {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  margin-left: -450px;
+  width: 900px;
+  text-align: center;
+}
+#login form {
+  display: inline-block;
+}
+#login form .input-large {
+  height: 34px;
+  width: 70%;
+  min-width: 200px;
+  max-width: 500px;
+  font-size: 20px;
+}
+#login h1 {
+  margin-bottom: 20px;
+}
+
 #push,
 #footer {
   height: 60px;
+  transition: height linear 1s;
+}
+#footer.notready { 
+  height: 0px;
 }
 #footer{
     border-top:1px solid #ebebeb;
@@ -295,4 +344,36 @@ h1{
 }
 .nudge-left {
   margin-left: 10px;
+}
+
+
+/* Loading */
+
+.app-loading-container {
+  z-index: 9000;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  margin-right: 20px;
+  width: 25px;
+  height: 25px;
+}
+
+.app-loading-animation {
+  -moz-transition: all linear 1s;
+  -webkit-transition: all linear 1s;
+  transition: all linear 1s;
+  background: url(../img/wave-spinner-blue.gif) center center no-repeat;
+  width: 25px;
+  height: 25px;
+  display: block;
+}
+
+.app-loading-animation.ready {
+  opacity: 0;
+}
+
+.app-loading-animation,
+.app-loading-animation.loading {
+  opacity: 1;
 }

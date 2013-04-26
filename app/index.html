@@ -18,9 +18,17 @@
   </head>
 
   <body>
+    <span class="app-loading-container">
+      <span class="app-loading-animation ready" data-ng-class="status"></span>
+    </span>
 
     <!-- wrap -->
-    <div id="wrap">
+    <div id="wrap" class="hide" data-ng-controller="AppController" data-ng-class="{show: initialized, hide: !initialized}">
+      <div id="user" class="muted hide" data-ng-class="{hide: !loggedUser, show: loggedUser}">
+        Logged in as <strong>{{ loggedUser.name }}</strong>
+        (<a href="javascript:void(0)" data-ng-click="logout()">logout</a>)
+      </div>
+
       <div class="container" style="padding-right:0;padding-left:40px;">
         <div class="row">
 
@@ -37,47 +45,22 @@
             <div id="ng-view" role="main" data-ng-view data-ng-animate="{enter: 'view-enter', leave: 'view-leave'}"></div>
           </div>
 
-          <div class="sashbar">
+          <div class="sashbar" data-ng-class="{notready: !loggedUser}">
 
+=======
+          <div class="span3 offset1 sashbar" data-ng-class="{notready: !loggedUser}">
             <h2>Achievements</h2>
             
-            <div class="badge-wrapper">
-              
-              <div class="badge-item">
-                <div class="badge-icon">  
-                  <img src="img/envelope.png" width="80" />
+            <div class="badge-wrapper" data-ng-controller="BadgeController">
+
+              <div class="badge-item clearfix" data-ng-repeat="badge in badges" ng-class="{grayscale: !badge.unlocked}">
+                <div class="badge-icon">
+                  <img data-ng-src="{{ badge.image_url }}" />
                 </div>
                 <!-- badge image ends -->
                 <div class="badge-text">
-                  <h3>Admin</h3>
-                  <p>You unlocked the envelope!</p>
-                </div>
-                <!-- badge icon ends -->  
-              </div>
-              <!-- badge item ends -->
-
-              <div class="badge-item">
-                <div class="badge-icon">  
-                  <img src="img/historian.png" width="80" />
-                </div>
-                <!-- badge image ends -->
-                <div class="badge-text">
-                  <h3>Social</h3>
-                  <p>You unlocked the envelope!</p>
-                </div>
-                <!-- badge icon ends -->  
-              </div>
-              <!-- badge item ends -->
-
-
-              <div class="badge-item grayscale">
-                <div class="badge-icon">  
-                  <img src="img/mughunter.png" width="80" />
-                </div>
-                <!-- badge image ends -->
-                <div class="badge-text">
-                  <h3>Technical</h3>
-                  <p>You unlocked the envelope!</p>
+                  <h3>{{ badge.title }}</h3>
+                  <p data-ng-show="badge.unlocked">You unlocked the {{ badge.title }}!</p>
                 </div>
                 <!-- badge icon ends -->  
               </div>
@@ -118,8 +101,7 @@
           <div id="push"></div>
         </div>
 
-    <div id="footer">
-
+    <div id="footer" data-ng-class="{notready: !loggedUser}">
       <div class="btn-group dropup pull-right" style="margin-top:15px;margin-right:20px;">
         <button class="btn primary">All Tasks</button>
         <button class="btn primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
@@ -128,12 +110,12 @@
         </ul>
       </div>
 
-      <div class="container" style="margin-left:20px;" data-ng-controller="ProgressBarController">
-        <p class="pull-left" style="margin:18px 20px 0 0;font-weight:500;">
+      <div id="progress" class="container" style="margin-left:20px;" data-ng-controller="ProgressBarController" >
+        <p class="pull-left" style="margin:18px 20px 0 0;">
           <span data-ng-hide="isFinished">
             Your progress
           </span>
-          <span data-ng-show="isFinished" class="text-success">
+          <span data-ng-show="isFinished" class="text-success" style="display:none">
             You're done!
           </span>
         </p>

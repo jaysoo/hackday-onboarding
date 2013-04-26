@@ -6,6 +6,9 @@ define ['app'], (App) ->
         .when '/',
           templateUrl: 'views/welcome.html'
           controller: 'WelcomeController'
+        .when '/login',
+          templateUrl: 'views/login.html'
+          controller: 'LoginController'
         .when '/steps/:stepNum',
           templateUrl: 'views/step.html'
           controller: 'StepController'
@@ -13,7 +16,7 @@ define ['app'], (App) ->
           templateUrl: 'views/finish.html'
           controller: 'FinishController'
         .otherwise
-          redirectTo: '/'   
+          redirectTo: '/'
 
 
   App.config  Routes

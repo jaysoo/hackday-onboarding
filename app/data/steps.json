@@ -9,7 +9,8 @@
     "choice": null,
     "done": false,
     "previous": null,
-    "next": 43
+    "next": 43,
+    "badge": 17
   },
   {
     "id": 43,
@@ -38,7 +39,8 @@
     "choice": null,
     "done": false,
     "previous": 42,
-    "next": 44
+    "next": 44,
+    "badge": 18
   },
   {
     "id": 44,
@@ -50,6 +52,7 @@
     "choice": null,
     "done": false,
     "previous": 43,
-    "next": null
+    "next": null,
+    "badge": 19
   }
 ]

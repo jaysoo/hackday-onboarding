@@ -27,7 +27,7 @@ These commands will update both NodeJS and client-side dependences. The latter p
 
 Install NodeJS dependencies:
 
-    npm install --dev
+    npm install
 
 Install client-side JavaScript components:
 
@@ -37,7 +37,7 @@ Install client-side JavaScript components:
 Running
 -------
 
-You can start the server using the `grunt` command.
+You can start the server using the `grunt --force` command.
 
 Todo page: [http://localhost:9001/app/](http://localhost:9001/app/)
 
