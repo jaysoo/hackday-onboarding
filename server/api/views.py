@@ -65,6 +65,7 @@ class LoginResourceView(View, Resource):
         
       return HttpResponse(json.dumps(rval), mimetype='application/json', status=401)
 
+
 class LogoutResourceView(View, Resource):
     serializer = PythonSerializer()
 
@@ -75,6 +76,7 @@ class LogoutResourceView(View, Resource):
     def post(self, request, *args, **kwargs):
       del request.session['user']
       return HttpResponse('', mimetype='application/json', status=204)
+
 
 class TaskResourceView(View, Resource):
     serializer = PythonSerializer()

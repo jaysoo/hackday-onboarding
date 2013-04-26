@@ -24,10 +24,7 @@
 
     <!-- wrap -->
     <div id="wrap" class="hide" data-ng-controller="AppController" data-ng-class="{show: initialized, hide: !initialized}">
-      <div id="user" class="muted hide" data-ng-class="{hide: !loggedUser, show: loggedUser}">
-        Logged in as <strong>{{ loggedUser.name }}</strong>
-        (<a href="javascript:void(0)" data-ng-click="logout()">logout</a>)
-      </div>
+     
 
       <div class="container" style="padding-right:0;padding-left:20px;">
         <div class="row">
@@ -37,7 +34,7 @@
             <div id="ng-view" role="main" data-ng-view data-ng-animate="{enter: 'view-enter', leave: 'view-leave'}"></div>
           </div>
 
-          <div class="sashbar" data-ng-class="{notready: !loggedUser}">
+          <div data-ng-class="{notready: !loggedUser}">
 
           <div class="span3 offset1 sashbar" data-ng-class="{notready: !loggedUser}">
             <h2>Achievements</h2>
@@ -91,7 +88,8 @@
         </div>
 
     <div id="footer" data-ng-class="{notready: !loggedUser}">
-      <div class="btn-group dropup pull-right" style="margin-top:15px;margin-right:20px;">
+
+      <div class="btn-group dropup pull-right all-tasks" style="margin-top:15px;margin-right:20px;">
         <button class="btn primary">All Tasks</button>
         <button class="btn primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
         <ul id="tasks" class="dropdown-menu pull-right" data-ng-controller="StepsNavController">
@@ -104,6 +102,11 @@
           </li>
         </ul>
       </div>
+
+       <div id="user" class="muted hide pull-right" data-ng-class="{hide: !loggedUser, show: loggedUser}">
+        Logged in as <strong>{{ loggedUser.name }}</strong>
+        (<a href="javascript:void(0)" data-ng-click="logout()">logout</a>)
+       </div>
 
       <div id="progress" class="container" style="margin-left:20px;" data-ng-controller="ProgressBarController" >
         <p class="pull-left" style="margin:18px 20px 0 0;">

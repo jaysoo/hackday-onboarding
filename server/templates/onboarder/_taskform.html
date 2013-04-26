@@ -1,5 +1,10 @@
 {% extends 'common/layout.html' %}
 {% load commontags %}
+{% load wysiwyg %}
+
+{% block extrahead %}
+{% wysiwyg_setup %}
+{% endblock %}
 
 {% block content %}
 <div class="page-header">
@@ -17,7 +22,9 @@
             {% display_field form.description %}
             {% display_field form.badge %}
             {% display_field form.image %}
+            {% display_field form.open_ended %}
         </div>
+        <div class="span6">&nbsp;</div>
          <div class="span8 profile-list">
             <div class="span8">
                 <h4>Profiles to which this task is assigned #greatgrammarbro</h4>
@@ -48,5 +55,6 @@
         <a class="btn btn-link" href="{% url 'tasks' %}">Cancel</a>
     </div>
     {% csrf_token %}
+    {% wysiwyg_editor "id_description" %}
 </form>
 {% endblock %}
