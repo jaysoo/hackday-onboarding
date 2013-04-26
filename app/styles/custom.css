@@ -122,7 +122,6 @@ html,
 body {
   height: 100%;
 }
-
 body{
     font-family: "Open Sans", Helvetica, Arial, sans-serif;
     color: #1c2f3b;
@@ -138,8 +137,8 @@ h1, h2, h3, h4, h5{
 }
 h1{
   letter-spacing: -2px;
-  font-size:60px;
-  line-height:1.4;
+  font-size:66px;
+  line-height:1.1;
 }
 .btn-wave {
     color: #fff;
@@ -155,13 +154,14 @@ h1{
     border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff027680',endColorstr='#ff027680',GradientType=0);
     filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    border-radius:0;
 }
 .btn-wave:hover {
     background: #00818d;
     color:#fff;
 }
 .main{
-    padding-top:50px;
+    padding-top:30px;
 }
 #wrap {
   min-height: 100%;
@@ -169,11 +169,19 @@ h1{
   height: 100%;
   margin: 0 auto -60px;
 }
+.illustration{
+    position:absolute;
+    bottom:20px;
+}
 .sashbar{
-    background:#f5f5f5;
+    background:url(../img/linedpaper.png) #f5f5f5;
     margin-top:-30px;
     border-left:1px solid #ccc;
     border-bottom:1px solid #ccc;
+    height:800px;
+    width:350px;
+    position:fixed;
+    right:-20px;
     /*transform:rotate(4deg);
     -ms-transform:rotate(4deg);
     -webkit-transform:rotate(4deg);*/
@@ -190,6 +198,11 @@ h1{
     border-top:3px dashed #e5e5e5;
     margin-top:25px;
 }*/
+.close-sidebar{
+    position:absolute;
+    top:40px;
+    right:20px;
+}
 .badge-item{
     padding:10px 0 20px 30px;
     margin-bottom:20px;
@@ -201,7 +214,10 @@ h1{
 .badge-text{
     float:left;
     width:170px;
-    margin-bottom:40px;
+    margin-bottom:30px;
+}
+.badge-text h3{
+    margin:0;
 }
 .grayscale{
     filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+ */
@@ -219,6 +235,9 @@ h1{
 }*/
 .container{
     padding-left:20px;
+    margin-left:20px;
+    width: auto;
+    max-width: 680px;
 }
 .sections ul{
     margin-left:0px;
@@ -256,10 +275,7 @@ h1{
   }
 }
 
-.container {
-  width: auto;
-  max-width: 680px;
-}
+
 .container .credit {
   margin: 20px 0;
 }
