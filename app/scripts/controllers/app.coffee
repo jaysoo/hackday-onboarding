@@ -1,6 +1,6 @@
 define ['app'], (App) ->
 
-  App.controller 'AppController', ($scope, $rootScope, $location, $cookies, appLoading, AppCache) ->
+  App.controller 'AppController', ($scope, $rootScope, $location, $cookies, $http, appLoading, AppCache) ->
     $rootScope.topScope = $rootScope
     $rootScope.$on '$routeChangeStart', -> appLoading.loading()
     $rootScope.$on '$routeChangeSuccess', -> appLoading.ready()
@@ -12,6 +12,9 @@ define ['app'], (App) ->
       # Log user out.
       $rootScope.loggedUser = $cookies.loggedUser = undefined
 
-      # Refresh browser to clear everything out.
-      window.location.reload()
+      $http.post('/api/logout')
+        .then(->
+          # Refresh browser to clear everything out.
+          window.location.reload()
+        )
 
