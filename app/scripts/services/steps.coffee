@@ -89,7 +89,5 @@ define ['app'], (App) ->
         prev?.next = step.number
         prev = step
 
-      console.log steps
-
 
   App.service 'StepsService', StepsService

@@ -1,6 +1,6 @@
 from django.utils import simplejson as json
 from django.template.defaultfilters import removetags
-
+from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from django.core.serializers.json import DjangoJSONEncoder
@@ -8,7 +8,7 @@ from django.views.generic import View
 from django.core.serializers.python import Serializer as PythonSerializer
 from django.http import HttpResponse, Http404
 
-from onboarder.models import *
+from onboarder.models import Badge, Task, Profile, Choice, NewRecruit
 
 
 class Resource(object):
@@ -83,6 +83,7 @@ class LogoutResourceView(View, Resource):
 class TaskResourceView(View, Resource):
     serializer = PythonSerializer()
 
+    @method_decorator(login_required)
     @method_decorator(csrf_exempt)
     def dispatch(self, *args, **kwargs):
         return super(TaskResourceView, self).dispatch(*args, **kwargs)
@@ -106,6 +107,7 @@ class TaskResourceView(View, Resource):
 class BadgeResourceView(View, Resource):
     serializer = PythonSerializer()
 
+    @method_decorator(login_required)
     @method_decorator(csrf_exempt)
     def dispatch(self, *args, **kwargs):
         return super(BadgeResourceView, self).dispatch(*args, **kwargs)

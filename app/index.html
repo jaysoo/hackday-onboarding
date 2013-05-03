@@ -14,7 +14,7 @@
 
     <!-- Fav and touch icons -->
     <link rel="shortcut icon" href="favicon.png">
-    
+
   </head>
 
   <body>
@@ -24,7 +24,7 @@
 
     <!-- wrap -->
     <div id="wrap" class="hide" data-ng-controller="AppController" data-ng-class="{show: initialized, hide: !initialized}">
-     
+
 
       <div class="container" style="padding-right:0;padding-left:20px;">
         <div class="row">
@@ -38,9 +38,9 @@
 
           <div class="span3 offset1 sashbar" data-ng-class="{notready: !loggedUser}">
             <h2>Achievements</h2>
-            
+
             <div class="badge-wrapper" data-ng-controller="BadgeController">
-              
+
               <div class="badge-item" data-ng-repeat="badge in badges" ng-class="{grayscale: !badge.unlocked}">
                 <div class="badge-icon">
                   <img data-ng-src="{{ badge.image_url }}" width="80" />
@@ -50,11 +50,11 @@
                   <h3>{{ badge.title }}</h3>
                   <p>You unlocked the {{ badge.title }}!</p>
                 </div>
-                <!-- badge icon ends -->  
+                <!-- badge icon ends -->
               </div>
               <!-- badge item ends -->
 
-             </div> 
+             </div>
              <!-- badge wrapper ends -->
 
             <div class="clearer"></div>
@@ -62,7 +62,7 @@
             <h2 style="margin-top:0px;">Have you met?</h2>
             <div data-ng-controller="FunFactsController">
               <div class="badge-item">
-                <div class="badge-icon">  
+                <div class="badge-icon">
                   <img data-ng-src="{{ person.img }}" width="80" style="border-radius:50px;" />
                 </div>
                 <!-- badge image ends -->
@@ -70,7 +70,7 @@
                   <h3>{{ person.name }}</h3>
                   <p>{{ person.trivia }}</p>
                 </div>
-                <!-- badge icon ends -->  
+                <!-- badge icon ends -->
               </div>
               <!-- badge item ends -->
             </div>
@@ -120,16 +120,14 @@
         </p>
 
         <div class="progress">
-          <div class="bar" data-ng-class="{'bar-success': isFinished}" style="width: {{ percentCompleted }}%;"></div>  
+          <div class="bar" data-ng-class="{'bar-success': isFinished}" style="width: {{ percentCompleted }}%;"></div>
         </div>
-
-        <span class="level-title small-text" data-ng-controller="LevelController">{{ profile.level_title }}</span>
       </div>
       </div>
      </div>
 
     <script data-main="scripts/main" src="components/requirejs/require.js"></script>
-   
+
   </body>
 </html>
 

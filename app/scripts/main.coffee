@@ -27,7 +27,6 @@ require
     'controllers/badge'
     'controllers/finish'
     'controllers/fun_facts'
-    'controllers/level'
     'controllers/login'
     'controllers/progressbar'
     'controllers/step'
