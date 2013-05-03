@@ -3,7 +3,8 @@ define ['app'], (App) ->
   LoginController = ($scope, $dialog, $rootScope, $http, $location, $cookies) ->
     # Try to login.
     $scope.login = (email) ->
-      $http.post('/api/login', {email: email})
+      $http.get('data/login.json', {email: email})
+      # $http.post('/api/login', {email: email})
         .then(
           # Success
           (resp) ->

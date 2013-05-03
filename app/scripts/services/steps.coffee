@@ -2,7 +2,7 @@ define ['app'], (App) ->
 
   class StepsService
     constructor: ($resource, $http, $rootScope, AppCache, BadgeService) ->
-      @Step = $resource '/api/tasks/'
+      @Step = $resource 'data/steps.json'
       @http = $http
       @cache = AppCache
       @rootScope = $rootScope
@@ -13,19 +13,13 @@ define ['app'], (App) ->
       steps = @cache.get 'steps'
 
       if steps
-        @updateBadgeStatus(step) for step in steps
-        @rootScope.$broadcast 'onStepsLoaded', steps
-        @initStuff(steps)
+        @onLoaded(steps)
         respond?(steps)
       else
         @Step.query (steps) =>
-          # Sort by step number in ascending order.
-          steps = _.sortBy steps, 'number'
-
+          steps = @preprocess(steps)
           @cache.put 'steps', steps
-          @updateBadgeStatus(step) for step in steps
-          @initStuff(steps)
-          @rootScope.$broadcast 'onStepsLoaded', steps
+          @onLoaded(steps)
           respond?(steps)
 
     get: (id, respond) ->
@@ -72,10 +66,11 @@ define ['app'], (App) ->
 
     # Sets up the proper prev/next chain.
     # Sets up the proper type.
-    initStuff: (steps) =>
+    preprocess: (steps) =>
       prev = null
       next = null
       number = 1
+
       for step in steps
         step.number = number++
         if step.choices?.length
@@ -89,5 +84,10 @@ define ['app'], (App) ->
         prev?.next = step.number
         prev = step
 
+      return steps
+
+    onLoaded: (steps) ->
+      @updateBadgeStatus(step) for step in steps
+      @rootScope.$broadcast 'onStepsLoaded', steps
 
   App.service 'StepsService', StepsService
